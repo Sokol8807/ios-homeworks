@@ -1,9 +1,12 @@
 //
 //  FeedViewController.swift
+//
 //  Navigation
 //
 //  Created by Ilya Sokolov on 15.04.2022.
-//
+
+// Отвечает за ленту
+
 
 import UIKit
 
