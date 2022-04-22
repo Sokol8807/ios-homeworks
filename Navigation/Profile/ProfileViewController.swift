@@ -1,7 +1,4 @@
 
-
-
-
 import UIKit
 
 class ProfileViewController: UIViewController {
@@ -16,11 +13,9 @@ class ProfileViewController: UIViewController {
 
     }
     
-    
-  
-    
     override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
+        
+        super.viewWillLayoutSubviews()
         profileHeaderView.frame = view.safeAreaLayoutGuide.layoutFrame
         
     }
