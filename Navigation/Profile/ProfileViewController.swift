@@ -9,9 +9,8 @@ class ProfileViewController: UIViewController {
     let newButton: UIButton = {
         
         let buttonNew = UIButton()
-        buttonNew.translatesAutoresizingMaskIntoConstraints = false
         buttonNew.setTitle("NewPost", for: .normal)
-        buttonNew.backgroundColor = .blue
+        buttonNew.backgroundColor = .systemBlue
         
         return buttonNew
     } ()
@@ -19,18 +18,34 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+        //view.backgroundColor = .lightGray
         setupAutoLayuot()
+        setupNavigationController()
         
        
     }
     
+    private func setupNavigationController (){
+        
+        let navigationBar = UINavigationBarAppearance()
+        navigationBar.backgroundColor = .white
+        self.navigationController?.navigationBar.standardAppearance = navigationBar
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBar
+        view.backgroundColor = .lightGray
+        
+        
+    }
+    
     private func setupAutoLayuot (){
         
-        view.addSubview(profileHeaderView)   //Добавляю profileHV в качестве subview
-        view.addSubview(newButton)
         
+        view.addSubview(profileHeaderView)   //Добавляю profileHeaderView в качестве subview
+        view.addSubview(newButton)           //Добавляю newButton в качестве subview
+        
+        
+      
         profileHeaderView.translatesAutoresizingMaskIntoConstraints.self = false
+        newButton.translatesAutoresizingMaskIntoConstraints.self = false
         
         
         NSLayoutConstraint.activate([
@@ -49,12 +64,6 @@ class ProfileViewController: UIViewController {
             newButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             newButton.heightAnchor.constraint(equalToConstant: 40)
-            
-        
         ])
-        
-        
     }
-   
-    
 }
