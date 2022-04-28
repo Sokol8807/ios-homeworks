@@ -51,7 +51,7 @@ class FeedViewController: UIViewController {
             private lazy var viewButton: UIButton = {
                 let button = UIButton()
                 button.translatesAutoresizingMaskIntoConstraints = false
-                button.backgroundColor = .label
+                button.backgroundColor = .systemBlue
                 button.tintColor = .white
                 button.setTitle("Go to Post", for: .normal)
                 button.layer.cornerRadius = 5
