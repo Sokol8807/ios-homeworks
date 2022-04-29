@@ -10,21 +10,20 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
-
-   let feedVC = FeedViewController()
-   let profileVC = ProfileViewController()
-   
+    
+    let feedVC = FeedViewController()
+    let profileVC = ProfileViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupControllers()
-    
+        
     }
-   
+    
     private func setupControllers (){
         
-
         // создаем навигайшен контролер1
-    
+        
         let navFeedVC = UINavigationController(rootViewController: feedVC)
         feedVC.tabBarItem.title = "Лента"
         feedVC.tabBarItem.image = UIImage(systemName: "bubble.right.circle")
@@ -39,7 +38,7 @@ class TabBarViewController: UITabBarController {
         
         viewControllers = [navFeedVC,navProfileVC]
     }
-
+    
 }
 
 

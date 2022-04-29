@@ -38,7 +38,7 @@ class ProfileHeaderView: UIView {
     
     // добавляю кнопуку
     
-    private lazy var setStatusButton: UIButton = {
+    private var setStatusButton: UIButton = {
         
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -71,10 +71,10 @@ class ProfileHeaderView: UIView {
         return label
         
     }()
-      
+    
     // добавляю поле для статуса
     
-    private lazy var statusView: UITextView = {
+    private var statusView: UITextView = {
         
         let textView = UITextView ()
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,12 +84,12 @@ class ProfileHeaderView: UIView {
         textView.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return textView
     }()
-        
+    
     // добавляю поле для ввода статуса
     
-      lazy var statusTextField: UITextField = {
-          let fieldText = UITextField()
-          fieldText.translatesAutoresizingMaskIntoConstraints = false
+    private var statusTextField: UITextField = {
+        let fieldText = UITextField()
+        fieldText.translatesAutoresizingMaskIntoConstraints = false
         fieldText.text = ""
         fieldText.backgroundColor = .white
         fieldText.layer.cornerRadius = 12
@@ -102,7 +102,7 @@ class ProfileHeaderView: UIView {
     
     
     @objc private func buttonStatus() {
-      
+        
         statusView.text = statusText
         print(statusView.text ?? "")
     }
@@ -110,7 +110,7 @@ class ProfileHeaderView: UIView {
     @objc private func statusTextChanged() {
         
         statusText = statusTextField.text ?? ""
-        }
+    }
     
     
     // добавляю функцию авторесайзинга
@@ -120,7 +120,7 @@ class ProfileHeaderView: UIView {
         
         // активирую лайот общим массивом
         NSLayoutConstraint.activate([
-        
+            
             // настройка отображение avatarImageView
             avatarImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
             avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
@@ -156,5 +156,5 @@ class ProfileHeaderView: UIView {
         ])
         
     }
-
+    
 }

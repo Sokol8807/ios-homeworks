@@ -22,7 +22,6 @@ class ProfileViewController: UIViewController {
         setupAutoLayuot()
         setupNavigationController()
         
-       
     }
     
     private func setupNavigationController (){
@@ -33,20 +32,15 @@ class ProfileViewController: UIViewController {
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBar
         view.backgroundColor = .lightGray
         
-        
     }
     
     private func setupAutoLayuot (){
         
-        
         view.addSubview(profileHeaderView)   //Добавляю profileHeaderView в качестве subview
         view.addSubview(newButton)           //Добавляю newButton в качестве subview
         
-        
-      
         profileHeaderView.translatesAutoresizingMaskIntoConstraints.self = false
         newButton.translatesAutoresizingMaskIntoConstraints.self = false
-        
         
         NSLayoutConstraint.activate([
             
@@ -56,7 +50,6 @@ class ProfileViewController: UIViewController {
             profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
-            
             
             //автолайот для newButton
             
