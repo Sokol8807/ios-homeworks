@@ -17,6 +17,7 @@
 		FDCA7F6A280D9020008EA20F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCA7F69280D9020008EA20F /* Post.swift */; };
 		FDCBE83228085E82001B7C26 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCBE83128085E82001B7C26 /* TabBarViewController.swift */; };
 		FDCBE83428085F8C001B7C26 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCBE83328085F8C001B7C26 /* ProfileViewController.swift */; };
+		FDFD561D281DBB76006F3A34 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFD561C281DBB76006F3A34 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FDCA7F69280D9020008EA20F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		FDCBE83128085E82001B7C26 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FDCBE83328085F8C001B7C26 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FDFD561C281DBB76006F3A34 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			children = (
 				FDCBE83328085F8C001B7C26 /* ProfileViewController.swift */,
 				FD587098281161760085F043 /* ProfileHeaderView.swift */,
+				FDFD561C281DBB76006F3A34 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			files = (
 				FDCBE83428085F8C001B7C26 /* ProfileViewController.swift in Sources */,
 				FDCBE83228085E82001B7C26 /* TabBarViewController.swift in Sources */,
+				FDFD561D281DBB76006F3A34 /* LogInViewController.swift in Sources */,
 				FDA0B512280D568B00026AC0 /* InfoViewController.swift in Sources */,
 				FDCA7F6A280D9020008EA20F /* Post.swift in Sources */,
 				FD61797C280821EB00A831E3 /* PostViewController.swift in Sources */,

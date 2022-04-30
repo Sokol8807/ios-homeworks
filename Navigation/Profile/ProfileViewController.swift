@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
         setupNavigationController()
         
     }
-    
+    //  отвечает за белую полоску в Навигайшен бар с надписью Ваш профиль
     private func setupNavigationController (){
         
         let navigationBar = UINavigationBarAppearance()
