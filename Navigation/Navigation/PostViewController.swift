@@ -10,9 +10,7 @@ import UIKit
 class PostViewController: UIViewController {
     
     var titlePost: String = ""
-    
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
@@ -21,7 +19,6 @@ class PostViewController: UIViewController {
         makeBarItem()
        
     }
-    
     
     private func makeBarItem(){
         let barItem = UIBarButtonItem(title: "Инфо", style: .plain, target: self, action: #selector(tapAction))
@@ -32,9 +29,6 @@ class PostViewController: UIViewController {
         present(infoViewController, animated: true)
 
     }
-
-
-    
 
 }
 
