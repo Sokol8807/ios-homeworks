@@ -29,25 +29,19 @@ class TabBarViewController: UITabBarController {
         let navFeedVC = UINavigationController(rootViewController: feedVC)
         feedVC.tabBarItem.title = "Лента"
         feedVC.tabBarItem.image = UIImage(systemName: "bubble.right.circle")
-        feedVC.navigationItem.title = "Ваша Лента"
+        feedVC.navigationItem.title = "Feed"
         
         // создаем навигайшен контролер2
         
-        let navProfileVC = UINavigationController(rootViewController: profileVC)
-        profileVC.tabBarItem.title = "Профиль"
-        profileVC.tabBarItem.image = UIImage(systemName: "person.crop.square.fill")
-        profileVC.navigationItem.title = "Ваш профиль" // отвечает за полоску сверху
-       
-        
-        let navLoginVC = UINavigationController(rootViewController: loginVC)
-        loginVC.tabBarItem.title = "Логин"
+        let navProfileVC = UINavigationController(rootViewController: loginVC)
+        loginVC.tabBarItem.title = "Профиль"
         loginVC.tabBarItem.image = UIImage(systemName: "person.crop.square.fill")
-       // loginVC.navigationItem.title = "" // отвечает за полоску сверху
+        loginVC.navigationItem.title = "Profile" // отвечает за полоску сверху
+       
+    
         
         
-        
-        
-        viewControllers = [navFeedVC,navProfileVC, navLoginVC]
+        viewControllers = [navFeedVC,navProfileVC]
     }
     
 }

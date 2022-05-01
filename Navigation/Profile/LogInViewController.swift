@@ -14,8 +14,9 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupLayuotLoginPassword()
-        setupLayoutImageButton()
+        navigationController?.navigationBar.isHidden = true
+       
+        setupLayuot()
         
     }
     
@@ -40,7 +41,13 @@ class LogInViewController: UIViewController {
         loginPasswordSV.translatesAutoresizingMaskIntoConstraints = false
         loginPasswordSV.axis = .vertical
         loginPasswordSV.distribution = .fillEqually
-        //loginPasswordSV.spacing = .zero
+        loginPasswordSV.backgroundColor = .systemGray6
+        loginPasswordSV.layer.cornerRadius = 10
+        loginPasswordSV.layer.borderColor = UIColor.lightGray.cgColor
+        loginPasswordSV.layer.borderWidth = 0.5
+        loginPasswordSV.layer.masksToBounds = true
+        loginPasswordSV.spacing = 0.1
+
         
 
         return loginPasswordSV
@@ -51,15 +58,13 @@ class LogInViewController: UIViewController {
        
         let emailTF = UITextField()
         emailTF.translatesAutoresizingMaskIntoConstraints = false
-        emailTF.text = "  Email or phone"
-        emailTF.backgroundColor = .systemGray6
+        emailTF.placeholder = "  Email or phone"
         emailTF.layer.borderWidth = 0.5
-        emailTF.layer.cornerRadius = 10
         emailTF.layer.borderColor = UIColor.lightGray.cgColor
         emailTF.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         emailTF.textColor = .black
         emailTF.autocapitalizationType = .none
-        //emailTF.tintColor =   // нужно уточнить
+        emailTF.tintColor = .lightGray
                 
         
         return emailTF
@@ -71,16 +76,18 @@ class LogInViewController: UIViewController {
        
         let passwordTF = UITextField()
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
-        passwordTF.text = "Email or phone"
-        passwordTF.backgroundColor = .systemGray6
-        passwordTF.layer.borderWidth = 0.5
-        passwordTF.layer.cornerRadius = 10
+        passwordTF.placeholder = "  Password"
         passwordTF.layer.borderColor = UIColor.lightGray.cgColor
         passwordTF.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         passwordTF.textColor = .black
         passwordTF.autocapitalizationType = .none
         passwordTF.isSecureTextEntry = true
-        //emailTF.tintColor =   // нужно уточнить
+        passwordTF.tintColor = .lightGray
+        
+        // отодвинуть текс от угла
+//        passwordTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: passwordTF.frame.height))
+//        passwordTF.leftViewMode = .always
+       
                 
         
         return passwordTF
@@ -112,31 +119,25 @@ class LogInViewController: UIViewController {
 //    }
     
     
-    // добавляю отображение и лайауты стейка логин и пароль
-    private func setupLayuotLoginPassword() {
+    // добавляю отображение и лайауты
+    
+    private func setupLayuot() {
+        
+        view.addSubview(logoImageView)
+        view.addSubview(loginButton)
         view.addSubview(stackViewLoginPassword)
         
+        // добавляю отображение на стейк
         [emailTextField, passwordTextField] .forEach {stackViewLoginPassword.addArrangedSubview($0)}
         
         NSLayoutConstraint.activate([
-        
-            stackViewLoginPassword.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
+            
+            // автолэйот для стека логин и пароль
+            stackViewLoginPassword.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120),
             stackViewLoginPassword.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackViewLoginPassword.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             stackViewLoginPassword.heightAnchor.constraint(equalToConstant: 100),
-
-
-        ])
-        
-     
-        
-    }
-    // добавляю отображение логотипа ВК и кнопики логин
-    private func setupLayoutImageButton() {
-        
-        [logoImageView, loginButton ] .forEach {view.addSubview($0)}
-        
-        NSLayoutConstraint.activate([
+            
             
             // автолэйот для Логотипа
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
@@ -152,11 +153,15 @@ class LogInViewController: UIViewController {
             loginButton.heightAnchor.constraint(equalToConstant: 50)
         
         
-        
-        
-        ])
+
             
-        }
+
+        ])
+        
+     
+        
+    }
+
     
 }
 
