@@ -29,7 +29,6 @@ class LogInViewController: UIViewController {
         logoIV.layer.borderColor = UIColor.lightGray.cgColor
         
         
-        
         return logoIV
     }()
     
@@ -41,6 +40,7 @@ class LogInViewController: UIViewController {
         loginPasswordSV.translatesAutoresizingMaskIntoConstraints = false
         loginPasswordSV.axis = .vertical
         loginPasswordSV.distribution = .fillEqually
+        //loginPasswordSV.spacing = .zero
         
 
         return loginPasswordSV
@@ -51,7 +51,7 @@ class LogInViewController: UIViewController {
        
         let emailTF = UITextField()
         emailTF.translatesAutoresizingMaskIntoConstraints = false
-        emailTF.text = "Email or phone"
+        emailTF.text = "  Email or phone"
         emailTF.backgroundColor = .systemGray6
         emailTF.layer.borderWidth = 0.5
         emailTF.layer.cornerRadius = 10
@@ -96,6 +96,7 @@ class LogInViewController: UIViewController {
         buttonLogin.backgroundColor = .blue  // нужно заменить - согласно макета !!
         buttonLogin.tintColor = .white
         buttonLogin.setTitle("Log In", for: .normal)
+        buttonLogin.layer.cornerRadius = 10
         
        // button.addTarget(self, action: #selector(tapAction), for: .touchUpInside)
         
@@ -119,15 +120,15 @@ class LogInViewController: UIViewController {
         
         NSLayoutConstraint.activate([
         
-            stackViewLoginPassword.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120),
+            stackViewLoginPassword.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
             stackViewLoginPassword.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackViewLoginPassword.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            stackViewLoginPassword.heightAnchor.constraint(equalToConstant: 100)
+            stackViewLoginPassword.heightAnchor.constraint(equalToConstant: 100),
+
 
         ])
         
      
-  
         
     }
     // добавляю отображение логотипа ВК и кнопики логин

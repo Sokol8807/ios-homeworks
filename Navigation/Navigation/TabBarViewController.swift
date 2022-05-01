@@ -14,6 +14,8 @@ class TabBarViewController: UITabBarController {
     let feedVC = FeedViewController()
     let profileVC = ProfileViewController()
     
+    let loginVC = LogInViewController ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupControllers()
@@ -35,8 +37,17 @@ class TabBarViewController: UITabBarController {
         profileVC.tabBarItem.title = "Профиль"
         profileVC.tabBarItem.image = UIImage(systemName: "person.crop.square.fill")
         profileVC.navigationItem.title = "Ваш профиль" // отвечает за полоску сверху
+       
         
-        viewControllers = [navFeedVC,navProfileVC]
+        let navLoginVC = UINavigationController(rootViewController: loginVC)
+        loginVC.tabBarItem.title = "Логин"
+        loginVC.tabBarItem.image = UIImage(systemName: "person.crop.square.fill")
+       // loginVC.navigationItem.title = "" // отвечает за полоску сверху
+        
+        
+        
+        
+        viewControllers = [navFeedVC,navProfileVC, navLoginVC]
     }
     
 }
