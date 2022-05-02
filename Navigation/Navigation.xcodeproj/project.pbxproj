@@ -19,6 +19,7 @@
 		FDCBE83428085F8C001B7C26 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCBE83328085F8C001B7C26 /* ProfileViewController.swift */; };
 		FDFD561D281DBB76006F3A34 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFD561C281DBB76006F3A34 /* LogInViewController.swift */; };
 		FDFD561F281EAF77006F3A34 /* HexUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFD561E281EAF77006F3A34 /* HexUIColor.swift */; };
+		FDFD562228206E19006F3A34 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFD562128206E19006F3A34 /* PostModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		FDCBE83328085F8C001B7C26 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FDFD561C281DBB76006F3A34 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		FDFD561E281EAF77006F3A34 /* HexUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexUIColor.swift; sourceTree = "<group>"; };
+		FDFD562128206E19006F3A34 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		FD61796B280821EB00A831E3 = {
 			isa = PBXGroup;
 			children = (
+				FDFD562028206BE9006F3A34 /* Post */,
 				FD587097281161370085F043 /* Profile */,
 				FD617976280821EB00A831E3 /* Navigation */,
 				FD617975280821EB00A831E3 /* Products */,
@@ -82,15 +85,23 @@
 			children = (
 				FD617977280821EB00A831E3 /* AppDelegate.swift */,
 				FDCBE83128085E82001B7C26 /* TabBarViewController.swift */,
-				FD61797B280821EB00A831E3 /* PostViewController.swift */,
 				FDA0B50F2809CC8700026AC0 /* FeedViewController.swift */,
 				FDA0B511280D568B00026AC0 /* InfoViewController.swift */,
-				FDCA7F69280D9020008EA20F /* Post.swift */,
 				FD617982280821EC00A831E3 /* LaunchScreen.storyboard */,
 				FD617985280821EC00A831E3 /* Info.plist */,
 				FD617980280821EC00A831E3 /* Assets.xcassets */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		FDFD562028206BE9006F3A34 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				FDCA7F69280D9020008EA20F /* Post.swift */,
+				FD61797B280821EB00A831E3 /* PostViewController.swift */,
+				FDFD562128206E19006F3A34 /* PostModel.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +184,7 @@
 				FDA0B5102809CC8700026AC0 /* FeedViewController.swift in Sources */,
 				FD617978280821EB00A831E3 /* AppDelegate.swift in Sources */,
 				FD587099281161760085F043 /* ProfileHeaderView.swift in Sources */,
+				FDFD562228206E19006F3A34 /* PostModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

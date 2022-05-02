@@ -74,6 +74,7 @@ class LogInViewController: UIViewController {
         
     }()
     
+    
     // создаю поле ввода пароля
     private var passwordTextField: UITextField = {
        
@@ -96,7 +97,6 @@ class LogInViewController: UIViewController {
         
     }()
     
-
    // создаю кнопку Log In
     private var loginButton: UIButton = {
         
