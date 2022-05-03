@@ -68,6 +68,11 @@ class LogInViewController: UIViewController {
         logTF.textColor = .black
         logTF.autocapitalizationType = .none
         logTF.tintColor = .lightGray
+        
+        // отодвинул текст от угла
+        logTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: logTF.frame.height))
+        logTF.leftViewMode = .always
+       
                 
         
         return logTF
@@ -88,9 +93,9 @@ class LogInViewController: UIViewController {
         passwordTF.isSecureTextEntry = true
         passwordTF.tintColor = .lightGray
         
-        // отодвинуть текс от угла
-//        passwordTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: passwordTF.frame.height))
-//        passwordTF.leftViewMode = .always
+        // отодвинул текст от угла
+        passwordTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: passwordTF.frame.height))
+        passwordTF.leftViewMode = .always
        
     
         return passwordTF
@@ -191,8 +196,8 @@ class LogInViewController: UIViewController {
             
             // автолэйот для стека логин и пароль
             stackViewLoginPassword.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120),
-            stackViewLoginPassword.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            stackViewLoginPassword.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            stackViewLoginPassword.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            stackViewLoginPassword.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             stackViewLoginPassword.heightAnchor.constraint(equalToConstant: 100),
             
             
@@ -204,14 +209,9 @@ class LogInViewController: UIViewController {
             
             //автолэйот для кнопки логин
         
-//            loginButton.topAnchor.constraint(equalTo: stackViewLoginPassword.bottomAnchor, constant: 16),
-//            loginButton.leadingAnchor.constraint(equalTo: stackViewLoginPassword.leadingAnchor),
-//            loginButton.trailingAnchor.constraint(equalTo: stackViewLoginPassword.trailingAnchor),
-//            loginButton.heightAnchor.constraint(equalToConstant: 50),
-            
             loginButton.topAnchor.constraint(equalTo: stackViewLoginPassword.safeAreaLayoutGuide.bottomAnchor, constant: 16),
-            loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            loginButton.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            loginButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             loginButton.heightAnchor.constraint(equalToConstant: 50),
             loginButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             

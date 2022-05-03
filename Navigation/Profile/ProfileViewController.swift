@@ -5,7 +5,7 @@ class ProfileViewController: UIViewController {
     
     
     
-    private var post = Post.makePostModel()
+    private var post = PostModel.makePostModel()
 
     
     private lazy var tableView: UITableView = {
@@ -14,6 +14,8 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.indentifire)
         
         
         
@@ -57,15 +59,19 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+//        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+//        var context: UIListContentConfiguration = cell.defaultContentConfiguration()
+//        context.text  = "Секция = \(indexPath.section), ячейка = \(indexPath.row)"
+//        context.image = post[indexPath.row].image
+//        cell.contentConfiguration = context
+//        return cell
+    
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.indentifire, for: indexPath) as! PostTableViewCell
         
-        
-        var context: UIListContentConfiguration = cell.defaultContentConfiguration()
-        context.text  = "Секция = \(indexPath.section), ячейка = \(indexPath.row)"
-        context.image = post[indexPath.row].image
-        cell.contentConfiguration = context
+        cell.setupCell(post[indexPath.row])
         
         return cell
+        
     }
     
 }
@@ -74,7 +80,10 @@ extension ProfileViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension ProfileViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //100
+        UITableView.automaticDimension   // автоматические размеры - условия элементы должны быть четко привязанны и к верху и к низу
+    }
     
 }
 

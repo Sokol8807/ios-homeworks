@@ -7,22 +7,22 @@
 
 import UIKit
 
-struct Post {
+struct PostModel {
     var author: String
     var image: UIImage
-    var likes: Int
+    var likes: Int   //должен быть Int
     var view: Int
     
     
-    static func makePostModel() -> [Post] {
+    static func makePostModel() -> [PostModel] {
         
-        var post = [Post]()
+        var post = [PostModel]()
         
         for _ in 0...2 {
         
-        post.append(Post(author: "Автор 1", image: UIImage(named: "JumpingCat")!, likes: 3, view: 6))
-        post.append(Post(author: "Автор 2", image: UIImage(named: "jumpingCat2")!, likes: 13, view: 56))
-        post.append(Post(author: "Автор 3", image: UIImage(named: "jumpingCat3")!, likes: 1, view: 10))
+        post.append(PostModel(author: "Автор 1", image: UIImage(named: "jumpingCat")!, likes: 3, view: 6))
+        post.append(PostModel(author: "Автор 2", image: UIImage(named: "jumpingCat2")!, likes: 13, view: 56))
+        post.append(PostModel(author: "Автор 3", image: UIImage(named: "jumpingCat3")!, likes: 1, view: 10))
         
         }
         
