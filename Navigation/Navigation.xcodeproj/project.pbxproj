@@ -20,6 +20,7 @@
 		FDFD561D281DBB76006F3A34 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFD561C281DBB76006F3A34 /* LogInViewController.swift */; };
 		FDFD561F281EAF77006F3A34 /* HexUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFD561E281EAF77006F3A34 /* HexUIColor.swift */; };
 		FDFD562228206E19006F3A34 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFD562128206E19006F3A34 /* PostModel.swift */; };
+		FDFD5626282086D8006F3A34 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFD5625282086D8006F3A34 /* PostTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FDFD561C281DBB76006F3A34 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		FDFD561E281EAF77006F3A34 /* HexUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexUIColor.swift; sourceTree = "<group>"; };
 		FDFD562128206E19006F3A34 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		FDFD5625282086D8006F3A34 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				FDCA7F69280D9020008EA20F /* Post.swift */,
 				FD61797B280821EB00A831E3 /* PostViewController.swift */,
 				FDFD562128206E19006F3A34 /* PostModel.swift */,
+				FDFD5625282086D8006F3A34 /* PostTableViewCell.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				FD617978280821EB00A831E3 /* AppDelegate.swift in Sources */,
 				FD587099281161760085F043 /* ProfileHeaderView.swift in Sources */,
 				FDFD562228206E19006F3A34 /* PostModel.swift in Sources */,
+				FDFD5626282086D8006F3A34 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
