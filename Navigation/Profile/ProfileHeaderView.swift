@@ -43,7 +43,6 @@ class ProfileHeaderView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemBlue
-        button.tintColor = .systemRed
         button.setTitle("Set status", for: .normal)
         button.layer.cornerRadius = 4
         button.titleLabel?.textColor = UIColor.systemRed  // цвет кнопки  - нужно проверить !!

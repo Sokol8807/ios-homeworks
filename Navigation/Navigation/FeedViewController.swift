@@ -44,7 +44,7 @@ class FeedViewController: UIViewController {
     
     @objc private func tapAction() {
         let postViewController = PostViewController()
-        // self.post = Post(title: "Post")
+//         self.post = Post(title: "Post")
         navigationController?.pushViewController(postViewController, animated: true)
     }
     
