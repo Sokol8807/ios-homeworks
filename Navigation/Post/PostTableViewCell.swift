@@ -8,58 +8,55 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
-     
-    
 
-    private var whiteView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
-        
-        return view
+    private var mainView: UIView = {
+        let viewWhite = UIView()
+        viewWhite.translatesAutoresizingMaskIntoConstraints = false
+        return viewWhite
     }()
     
-    private var postImageView: UIImageView = {
-        
+    private var postView: UIImageView = {
         let imageView = UIImageView ()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .black  
-        
+        imageView.backgroundColor = .black
         imageView.contentMode = .scaleAspectFit
-        
+        imageView.clipsToBounds = true
         return imageView
-        
-        
     }()
     
     
-    private var authourName: UILabel = {
-        
+    private var authourLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemGray4
-        label.text = "nameLable"
-        return label
-    }()
-    
-    
-    private var likesDescriprion: UILabel = {
-        
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemGray4
-        label.text = "descriptionLable"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = .black
         label.numberOfLines = 2
         return label
     }()
     
+    private var descriptionLable: UILabel = {
+        let descriptionLable = UILabel()
+        descriptionLable.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLable.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        descriptionLable.textColor = .systemGray
+        descriptionLable.numberOfLines = 0
+        return descriptionLable
+    }()
+    
+    private var likesLable: UILabel = {
+        let lableLike = UILabel()
+        lableLike.translatesAutoresizingMaskIntoConstraints = false
+        lableLike.font = .systemFont(ofSize: 16, weight: .regular)
+        lableLike.textColor = .black
+        return lableLike
+    }()
     
     private var viewLabel: UILabel = {
-        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemGray4
-        label.text = "views "
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textColor = .black
+        label.textAlignment = .right
         return label
     }()
    
@@ -68,64 +65,66 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
-        customizeCell()
+        //customizeCell()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // подписываю PostModel под элементы таблицы
     func setupCell(_ post: PostModel) {
-        
-        postImageView.image = post.image
-        authourName.text = post.author
-        likesDescriprion.text = "Likes \(post.likes)"
-        
-    }
-    
-    
-    
-    private func customizeCell(){
-        whiteView.layer.cornerRadius = 10
-        whiteView.layer.borderWidth = 2
-        whiteView.layer.borderColor = UIColor.black.cgColor
-        
+        authourLabel.text = post.author
+        postView.image = UIImage(named: post.image)
+        descriptionLable.text = post.description
+        likesLable.text = "Likes: \(post.likes)"
+        viewLabel.text = "Views: \(post.view)"
         
     }
+    
     
     private func layout() {
        
-        [whiteView, postImageView, authourName, likesDescriprion].forEach {contentView.addSubview($0)}
+        [mainView, postView,descriptionLable, authourLabel, likesLable, viewLabel].forEach {contentView.addSubview($0)}
         
-//        let heighView: CGFloat = 100
-        let viewInset: CGFloat = 8
-        let inset: CGFloat = 10
-        
+
         NSLayoutConstraint.activate([
         
-            whiteView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: viewInset),
-            whiteView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: viewInset),
-            whiteView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -viewInset),
-            whiteView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -viewInset),
+           
+            // Констрейнт для ячейки
+            mainView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+            mainView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
+            mainView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
+            mainView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
             
+            // Констрейнт для authourLabel
+            authourLabel.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 16),
+            authourLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 16),
+            authourLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -16),
             
+            // Констрейнт для postView
+            postView.topAnchor.constraint(equalTo: authourLabel.bottomAnchor, constant: 16),
+            postView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
+            postView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
+            postView.heightAnchor.constraint(equalTo: postView.widthAnchor),
             
-            postImageView.topAnchor.constraint(equalTo: whiteView.topAnchor, constant: inset),
-            postImageView.leadingAnchor.constraint(equalTo: whiteView.leadingAnchor, constant: inset),
-            postImageView.bottomAnchor.constraint(equalTo: whiteView.bottomAnchor, constant: -inset),
-            postImageView.widthAnchor.constraint(equalToConstant: 80),
+            // Констрейнт для descriptionLable
+            descriptionLable.topAnchor.constraint(equalTo: postView.bottomAnchor, constant: 16),
+            descriptionLable.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 16),
+            descriptionLable.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -16),
             
+            // Констрейнт для likesLable
+            likesLable.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 16),
+            likesLable.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 16),
+            likesLable.trailingAnchor.constraint(equalTo: mainView.centerXAnchor),
+            likesLable.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -16),
             
-            authourName.topAnchor.constraint(equalTo: postImageView.topAnchor),
-            authourName.leadingAnchor.constraint(equalTo: postImageView.trailingAnchor, constant: inset),
-            authourName.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -inset),
-        
-            likesDescriprion.topAnchor.constraint(equalTo: authourName.bottomAnchor, constant: inset),
-            likesDescriprion.leadingAnchor.constraint(equalTo: authourName.leadingAnchor),
-            likesDescriprion.trailingAnchor.constraint(equalTo: authourName.trailingAnchor),
-            likesDescriprion.bottomAnchor.constraint(equalTo: whiteView.bottomAnchor, constant: -inset)
-   
-        
+            // Констрейнт для viewLabel
+            viewLabel.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 16),
+            viewLabel.leadingAnchor.constraint(equalTo: mainView.centerXAnchor),
+            viewLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -16),
+            viewLabel.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -16)
         
         ])
         
