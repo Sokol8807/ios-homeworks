@@ -13,7 +13,6 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .gray
         makeButton()  // вызываем кнопку в viewDidLoad
-        
     }
     
     // добавляем кнопку
@@ -32,14 +31,12 @@ class InfoViewController: UIViewController {
         let okAction = UIAlertAction(title: "Выйти", style: .default){ _ in
             // добавляем код на действия ок по выходу но только через призент в этом контролере
             self.dismiss(animated: true)
-            
         }
+        
         let cancelAction = UIAlertAction(title: "Отмена", style: .destructive)
         // добавляем действия
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         present(alert, animated: true)
     }
-    
-    
 }

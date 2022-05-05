@@ -8,7 +8,7 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
-
+    
     private var mainView: UIView = {
         let viewWhite = UIView()
         viewWhite.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +23,6 @@ class PostTableViewCell: UITableViewCell {
         imageView.clipsToBounds = true
         return imageView
     }()
-    
     
     private var authourLabel: UILabel = {
         let label = UILabel()
@@ -59,19 +58,16 @@ class PostTableViewCell: UITableViewCell {
         label.textAlignment = .right
         return label
     }()
-   
-    // переообределяю инициализатор
     
+    // переообределяю инициализатор
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
-        //customizeCell()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     // подписываю PostModel под элементы таблицы
     func setupCell(_ post: PostModel) {
@@ -83,15 +79,11 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
-    
     private func layout() {
-       
         [mainView, postView,descriptionLable, authourLabel, likesLable, viewLabel].forEach {contentView.addSubview($0)}
         
-
         NSLayoutConstraint.activate([
-        
-           
+            
             // Констрейнт для ячейки
             mainView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
@@ -125,10 +117,6 @@ class PostTableViewCell: UITableViewCell {
             viewLabel.leadingAnchor.constraint(equalTo: mainView.centerXAnchor),
             viewLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -16),
             viewLabel.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -16)
-        
         ])
-        
-        
     }
-    
 }
