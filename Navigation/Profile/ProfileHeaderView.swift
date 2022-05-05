@@ -79,6 +79,9 @@ class ProfileHeaderView: UIView {
         fieldText.layer.borderWidth = 1
         fieldText.layer.borderColor = UIColor.black.cgColor
         fieldText.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        fieldText.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: fieldText.frame.height))
+        fieldText.leftViewMode = .always
+        
         fieldText.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return fieldText
     }()
