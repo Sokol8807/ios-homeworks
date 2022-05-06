@@ -47,16 +47,19 @@ class LogInViewController: UIViewController {
     private var logTextField: UITextField = {
         let logTF = UITextField()
         logTF.translatesAutoresizingMaskIntoConstraints = false
-        logTF.placeholder = "  Email or phone"
+        logTF.placeholder = "Email or phone"
         logTF.layer.borderWidth = 0.5
         logTF.layer.borderColor = UIColor.lightGray.cgColor
         logTF.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         logTF.textColor = .black
         logTF.autocapitalizationType = .none
         logTF.tintColor = .lightGray
+
         // отодвинул текст от угла
         logTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: logTF.frame.height))
         logTF.leftViewMode = .always
+
+
         return logTF
     }()
     
@@ -64,7 +67,7 @@ class LogInViewController: UIViewController {
     private var passwordTextField: UITextField = {
         let passwordTF = UITextField()
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
-        passwordTF.placeholder = "  Password"
+        passwordTF.placeholder = "Password"
         passwordTF.layer.borderColor = UIColor.lightGray.cgColor
         passwordTF.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         passwordTF.textColor = .black
@@ -74,6 +77,7 @@ class LogInViewController: UIViewController {
         // отодвинул текст от угла
         passwordTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: passwordTF.frame.height))
         passwordTF.leftViewMode = .always
+
         return passwordTF
         
     }()
@@ -163,6 +167,7 @@ class LogInViewController: UIViewController {
             logoImageView.widthAnchor.constraint(equalToConstant: 100),
             
             //автолэйот для кнопки логин
+
             loginButton.topAnchor.constraint(equalTo: stackViewLoginPassword.safeAreaLayoutGuide.bottomAnchor, constant: 16),
             loginButton.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             loginButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
