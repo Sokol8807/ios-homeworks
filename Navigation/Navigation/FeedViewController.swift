@@ -7,19 +7,14 @@
 
 // Отвечает за ленту
 
-
 import UIKit
 
 class FeedViewController: UIViewController {
-    
-    
-    var post = Post(title: "Мой пост")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemCyan
         stackVc()
-        
     }
     
     private let stackView: UIStackView = {
@@ -44,7 +39,6 @@ class FeedViewController: UIViewController {
     
     @objc private func tapAction() {
         let postViewController = PostViewController()
-//         self.post = Post(title: "Post")
         navigationController?.pushViewController(postViewController, animated: true)
     }
     
@@ -61,7 +55,6 @@ class FeedViewController: UIViewController {
     
     @objc private func didAction() {
         let postViewController = PostViewController()
-        //self.post = Post(title: "Post")
         navigationController?.pushViewController(postViewController, animated: true)
     }
     
@@ -76,5 +69,4 @@ class FeedViewController: UIViewController {
             stackView.heightAnchor.constraint(equalToConstant: 100),
         ])
     }
-    
 }

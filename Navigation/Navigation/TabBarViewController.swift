@@ -13,37 +13,37 @@ class TabBarViewController: UITabBarController {
     
     let feedVC = FeedViewController()
     let profileVC = ProfileViewController()
-    
     let loginVC = LogInViewController ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupControllers()
-        
+        setupNavigationController()
     }
     
     private func setupControllers (){
-        
         // создаем навигайшен контролер1
-        
         let navFeedVC = UINavigationController(rootViewController: feedVC)
         feedVC.tabBarItem.title = "Лента"
         feedVC.tabBarItem.image = UIImage(systemName: "bubble.right.circle")
         feedVC.navigationItem.title = "Feed"
         
         // создаем навигайшен контролер2
-        
         let navProfileVC = UINavigationController(rootViewController: loginVC)
         loginVC.tabBarItem.title = "Профиль"
         loginVC.tabBarItem.image = UIImage(systemName: "person.crop.square.fill")
         loginVC.navigationItem.title = "Profile" // отвечает за полоску сверху
-       
-    
-        
         
         viewControllers = [navFeedVC,navProfileVC]
     }
     
+    private func setupNavigationController() {
+        let navBar = UINavigationBarAppearance()
+        navBar.backgroundColor = .white
+        self.navigationController?.navigationBar.standardAppearance = navBar
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navBar
+        view.backgroundColor = .white
+    }
 }
 
 

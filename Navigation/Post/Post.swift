@@ -8,7 +8,7 @@
 import Foundation
 
 // создаю структуру Пост
-
 struct Post {
     var title: String
 }
+
