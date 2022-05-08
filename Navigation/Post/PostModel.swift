@@ -11,7 +11,7 @@ struct PostModel {
     var author: String
     var description: String?
     var image: String
-    var likes: Int   //должен быть Int
+    var likes: Int  
     var view: Int
     
     static func makePostModel() -> [PostModel] {

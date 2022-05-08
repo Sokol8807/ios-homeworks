@@ -33,7 +33,7 @@ class TabBarViewController: UITabBarController {
         let navProfileVC = UINavigationController(rootViewController: loginVC)
         loginVC.tabBarItem.title = "Профиль"
         loginVC.tabBarItem.image = UIImage(systemName: "person.crop.square.fill")
-        loginVC.navigationItem.title = "Profile" // отвечает за полоску сверху
+       // loginVC.navigationItem.title = "Profile" // отвечает за полоску сверху
         
         viewControllers = [navFeedVC,navProfileVC]
     }
