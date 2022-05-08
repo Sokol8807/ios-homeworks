@@ -6,7 +6,7 @@ class ProfileViewController: UIViewController {
     private var post = PostModel.makePostModel()
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped    )
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout ()
+        self.view.backgroundColor = .systemGray6
     }
     
     private func layout () {
