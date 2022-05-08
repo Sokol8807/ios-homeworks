@@ -22,6 +22,10 @@ class ProfileViewController: UIViewController {
         layout ()
         // перекрасил плашку навигайшенбара в серый -согласно макету
         self.view.backgroundColor = .systemGray6
+        hideKeyboardTapperAround()
+        
+        
+        
         
         
         // добавил обратные переход в профиль
@@ -92,8 +96,29 @@ extension ProfileViewController: PhotosTableViewCellDelegate {
     
 }
 
+// MARK: - Расширение скрывает клавиатуру
 
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+}
 
+// Расширение скрывает клавиатуру по тапу на любую часть экрана
+extension ProfileViewController: UITextViewDelegate {
+    
+    func hideKeyboardTapperAround() {
+        
+        let press: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        press.cancelsTouchesInView = false
+        view.addGestureRecognizer(press)
+    }
+    @objc func dismissKeyboard(){
+    
+        view.endEditing(true)
+    }
+}
 
 
 
