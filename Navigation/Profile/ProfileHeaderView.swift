@@ -74,6 +74,7 @@ class ProfileHeaderView: UIView {
         let fieldText = UITextField()
         fieldText.translatesAutoresizingMaskIntoConstraints = false
         fieldText.text = ""
+        fieldText.placeholder = "Set something"
         fieldText.backgroundColor = .white
         fieldText.layer.cornerRadius = 12
         fieldText.layer.borderWidth = 1

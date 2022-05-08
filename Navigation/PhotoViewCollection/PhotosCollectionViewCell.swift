@@ -9,7 +9,7 @@ import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
     
-    private let imageForGallery: UIImageView = {
+    private let galleryImages: UIImageView = {
         let galleryImage = UIImageView()
         galleryImage .translatesAutoresizingMaskIntoConstraints = false
         galleryImage .contentMode = .scaleAspectFill
@@ -26,22 +26,21 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Функция отвечает за показ фото
+    // добавляю метод показа фото
     func setupImageModel(_ image: ImageModel) {
-        imageForGallery.image = UIImage(named: image.image)
+        galleryImages.image = UIImage(named: image.image)
     }
     
     private func imageLayout() {
-        contentView.addSubview(imageForGallery)
+        contentView.addSubview(galleryImages)
         
-        // Констрейнт для imageView на TableView для CollectionView
+        // констрейны  imageView на TableView для CollectionView
         NSLayoutConstraint.activate([
-            imageForGallery.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageForGallery.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageForGallery.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            imageForGallery.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            galleryImages.topAnchor.constraint(equalTo: contentView.topAnchor),
+            galleryImages.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            galleryImages.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            galleryImages.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
-    
-    
+
 }

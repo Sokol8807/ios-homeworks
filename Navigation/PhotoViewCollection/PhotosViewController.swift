@@ -8,7 +8,7 @@
 import UIKit
 
 class PhotosViewController: UIViewController {
-     // вызоваю метод добавления картинок
+    // вызоваю метод добавления картинок
     var imageModel = ImageModel.addImage()
     
     private lazy var photoCollection: UICollectionView = {
@@ -43,6 +43,8 @@ class PhotosViewController: UIViewController {
 }
 
 
+// MARK: - UICollectionViewDataSource
+
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageModel.count
@@ -53,8 +55,6 @@ extension PhotosViewController: UICollectionViewDataSource {
         cell.setupImageModel(imageModel[indexPath.item])
         return cell
     }
-    
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -67,12 +67,12 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: width)
     }
     
-    // Метод для определения высоты меджу фотографиями
+    // Метод для установки высоты меджу фотографиями
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sideInset
     }
     
-    // Метод для определения расстояний со всех сторон
+    // Метод для устновки расстояний со всех сторон
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
     }
@@ -80,6 +80,4 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return sideInset
     }
-    
-
 }

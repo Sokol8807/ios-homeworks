@@ -50,19 +50,18 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.item != 0 {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-        cell.setupCell(postModel[indexPath.row - 1])
-        return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+            cell.setupCell(postModel[indexPath.row - 1])
+            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier, for: indexPath) as! PhotosTableViewCell
-            cell.setupLabel("Photo")
-            
+            cell.setupLabel("")
             //Кнопка перехода в Галерею
             cell.delegate = self
             cell.selectionStyle = .none
             return cell
         }
-}
+    }
 }
 // MARK: - UITableViewDelegate
 
@@ -90,7 +89,7 @@ extension ProfileViewController: PhotosTableViewCellDelegate {
         navigationController?.pushViewController(photosViewController, animated: true)
         
     }
-
+    
 }
 
 
