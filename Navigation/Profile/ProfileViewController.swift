@@ -73,6 +73,7 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return UITableView.automaticDimension   // автоматические размеры - условия элементы должны быть четко привязанны и к верху и к низу
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -84,6 +85,12 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 200:0
     }
+    
+
+ //  исчезновения выделения ячейки
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView .deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension ProfileViewController: PhotosTableViewCellDelegate {
@@ -93,7 +100,7 @@ extension ProfileViewController: PhotosTableViewCellDelegate {
         navigationController?.pushViewController(photosViewController, animated: true)
         
     }
-    
+
 }
 
 // MARK: - Расширение скрывает клавиатуру
