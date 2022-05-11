@@ -25,9 +25,6 @@ class ProfileViewController: UIViewController {
         hideKeyboardTapperAround()
         
         
-        
-        
-        
         // добавил обратные переход в профиль
         navigationItem.title = "Профиль"
         navigationController?.navigationBar.isHidden = false
