@@ -22,7 +22,7 @@ class LogInViewController: UIViewController {
     }
     
     //добавляю отображение Логотипа ВК
-    private let logoImageView: UIImageView = {
+    private lazy var logoImageView: UIImageView = {
         let logoIV = UIImageView(image: UIImage(named: "logoVK"))
         logoIV.translatesAutoresizingMaskIntoConstraints = false
         logoIV.layer.borderColor = UIColor.lightGray.cgColor
@@ -30,7 +30,7 @@ class LogInViewController: UIViewController {
     }()
     
     // создаю стейк логин и пароль
-    private let stackViewLoginPassword: UIStackView = {
+    private lazy var stackViewLoginPassword: UIStackView = {
         let loginPasswordSV = UIStackView()
         loginPasswordSV.translatesAutoresizingMaskIntoConstraints = false
         loginPasswordSV.axis = .vertical
@@ -45,7 +45,7 @@ class LogInViewController: UIViewController {
     }()
     
     // создаю поле ввода для почты или телефона
-    private var logTextField: UITextField = {
+    private lazy var logTextField: UITextField = {
         let logTF = UITextField()
         logTF.translatesAutoresizingMaskIntoConstraints = false
         logTF.placeholder = "Email or phone"
@@ -65,7 +65,7 @@ class LogInViewController: UIViewController {
     }()
     
     // создаю поле ввода пароля
-    private var passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let passwordTF = UITextField()
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
         passwordTF.placeholder = "Password"
@@ -84,7 +84,7 @@ class LogInViewController: UIViewController {
     }()
     
     // создаю кнопку Log In
-    private var loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let buttonLogin = UIButton()
         buttonLogin.translatesAutoresizingMaskIntoConstraints = false
         buttonLogin.backgroundColor = UIColor(hexString: "#4885CC")  // нужно заменить - согласно макета !!
@@ -101,13 +101,13 @@ class LogInViewController: UIViewController {
         navigationController?.pushViewController(profileVC, animated: true)
     }
     
-    private let scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     } ()
     
-    private let contentView: UIView = {
+    private lazy var contentView: UIView = {
         let contenView = UIView()
         contenView.translatesAutoresizingMaskIntoConstraints = false
         contenView.backgroundColor = .white
@@ -209,6 +209,5 @@ extension LogInViewController: UITextFieldDelegate {
     
         view.endEditing(true)
     }
-    
 }
 

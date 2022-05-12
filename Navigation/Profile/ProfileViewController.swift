@@ -3,8 +3,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private var postModel = PostModel.makePostModel()
-    private var imageModel = ImageModel.addImage()
+    private lazy var postModel = PostModel.makePostModel()
+    private lazy var imageModel = ImageModel.addImage()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -23,9 +23,6 @@ class ProfileViewController: UIViewController {
         // перекрасил плашку навигайшенбара в серый -согласно макету
         self.view.backgroundColor = .systemGray6
         hideKeyboardTapperAround()
-        
-        
-        
         
         
         // добавил обратные переход в профиль
@@ -86,8 +83,8 @@ extension ProfileViewController: UITableViewDelegate {
         return section == 0 ? 200:0
     }
     
-
- //  исчезновения выделения ячейки
+    
+    //  исчезновения выделения ячейки
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView .deselectRow(at: indexPath, animated: true)
     }
@@ -100,7 +97,7 @@ extension ProfileViewController: PhotosTableViewCellDelegate {
         navigationController?.pushViewController(photosViewController, animated: true)
         
     }
-
+    
 }
 
 // MARK: - Расширение скрывает клавиатуру
@@ -122,7 +119,7 @@ extension ProfileViewController: UITextViewDelegate {
         view.addGestureRecognizer(press)
     }
     @objc func dismissKeyboard(){
-    
+        
         view.endEditing(true)
     }
 }
