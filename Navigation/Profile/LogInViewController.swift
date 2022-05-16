@@ -62,8 +62,6 @@ class LogInViewController: UIViewController {
         // отодвинул текст от угла
         logTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: logTF.frame.height))
         logTF.leftViewMode = .always
-
-
         return logTF
     }()
     
@@ -81,7 +79,6 @@ class LogInViewController: UIViewController {
         // отодвинул текст от угла
         passwordTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: passwordTF.frame.height))
         passwordTF.leftViewMode = .always
-
         return passwordTF
         
     }()
@@ -105,15 +102,13 @@ class LogInViewController: UIViewController {
     @objc private func tapAction() {
         
         if logTextField.text == "" || passwordTextField.text == "" {
-            
-            let animation = CABasicAnimation(keyPath: "trimmer")
-            stackViewLoginPassword.layer.add(animation, forKey: "trimmer")
-            
-            animation.duration = 0.08
-            animation.repeatCount = 5
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.1
+            animation.repeatCount = 2
             animation.autoreverses = true
-            animation.fromValue = NSValue(cgPoint: CGPoint(x: stackViewLoginPassword.center.x - 10, y: stackViewLoginPassword.center.y))
-            animation.toValue = NSValue(cgPoint: CGPoint(x: stackViewLoginPassword.center.x + 10, y: stackViewLoginPassword.center.y))
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: stackViewLoginPassword.center.x - 5, y: stackViewLoginPassword.center.y))
+            animation.toValue = NSValue(cgPoint: CGPoint(x: stackViewLoginPassword.center.x + 5, y: stackViewLoginPassword.center.y))
+            stackViewLoginPassword.layer.add(animation, forKey: "position")
             
             logTextField.attributedPlaceholder = NSAttributedString (string: logTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red])
             passwordTextField.attributedPlaceholder = NSAttributedString (string: passwordTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red])
@@ -122,7 +117,7 @@ class LogInViewController: UIViewController {
             
         } else if logTextField.text != "" || passwordTextField.text != "" {
             
-            stackViewLoginPassword.layer.removeAnimation(forKey: "trimmer")
+            stackViewLoginPassword.layer.removeAnimation(forKey: "position")
             let profileVC = ProfileViewController()
             navigationController?.pushViewController(profileVC, animated: true)
             
