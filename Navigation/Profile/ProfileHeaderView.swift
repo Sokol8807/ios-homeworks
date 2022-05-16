@@ -186,8 +186,8 @@ class ProfileHeaderView: UIView {
             // настройка отображение avatarImageView
             avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 110),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 110),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 100),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 100),
             
             additionalAvatar.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             additionalAvatar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),

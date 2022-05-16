@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 class LogInViewController: UIViewController {
+    
+    private lazy var login = "12345678"
+    private lazy var password = "12345678"
+    
     private let notificationCenter = NotificationCenter.default
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +59,6 @@ class LogInViewController: UIViewController {
         logTF.textColor = .black
         logTF.autocapitalizationType = .none
         logTF.tintColor = .lightGray
-
         // отодвинул текст от угла
         logTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: logTF.frame.height))
         logTF.leftViewMode = .always
@@ -95,10 +98,42 @@ class LogInViewController: UIViewController {
         return buttonLogin
     }()
     
+    
+    
+    
     //действие кнопки - переход на экран ProfileViewController
     @objc private func tapAction() {
-        let profileVC = ProfileViewController()
-        navigationController?.pushViewController(profileVC, animated: true)
+        
+        if logTextField.text == "" || passwordTextField.text == "" {
+            
+            let animation = CABasicAnimation(keyPath: "trimmer")
+            stackViewLoginPassword.layer.add(animation, forKey: "trimmer")
+            
+            animation.duration = 0.08
+            animation.repeatCount = 5
+            animation.autoreverses = true
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: stackViewLoginPassword.center.x - 10, y: stackViewLoginPassword.center.y))
+            animation.toValue = NSValue(cgPoint: CGPoint(x: stackViewLoginPassword.center.x + 10, y: stackViewLoginPassword.center.y))
+            
+            logTextField.attributedPlaceholder = NSAttributedString (string: logTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red])
+            passwordTextField.attributedPlaceholder = NSAttributedString (string: passwordTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red])
+            
+            
+            
+        } else if logTextField.text != "" || passwordTextField.text != "" {
+            
+            stackViewLoginPassword.layer.removeAnimation(forKey: "trimmer")
+            let profileVC = ProfileViewController()
+            navigationController?.pushViewController(profileVC, animated: true)
+            
+        }
+        
+        
+        
+        
+
+        
+      
     }
     
     private lazy var scrollView: UIScrollView = {
