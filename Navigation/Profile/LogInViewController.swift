@@ -95,7 +95,16 @@ class LogInViewController: UIViewController {
         return buttonLogin
     }()
     
-    
+    // всплывающее предупреждение о длинне пароля
+    private lazy var alertLabel: UILabel = {
+        let labelAlert = UILabel()
+        labelAlert.translatesAutoresizingMaskIntoConstraints = false
+        labelAlert.text = "Внимание! Пароль слишком короткий"
+        labelAlert.font = UIFont.systemFont(ofSize: 5, weight: .thin)
+        labelAlert.textColor = .red
+        
+        return labelAlert
+    }()
     
     
     //действие кнопки - переход на экран ProfileViewController
@@ -125,10 +134,6 @@ class LogInViewController: UIViewController {
         
         
         
-        
-
-        
-      
     }
     
     private lazy var scrollView: UIScrollView = {
@@ -178,6 +183,8 @@ class LogInViewController: UIViewController {
         contentView.addSubview(logoImageView)
         contentView.addSubview(loginButton)
         contentView.addSubview(stackViewLoginPassword)
+        // добавил лабел предупреждение на контент вью
+        contentView.addSubview(alertLabel)
         
         // добавляю отображение на стейк
         [logTextField, passwordTextField] .forEach {stackViewLoginPassword.addArrangedSubview($0)}
@@ -190,6 +197,12 @@ class LogInViewController: UIViewController {
             stackViewLoginPassword.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             stackViewLoginPassword.heightAnchor.constraint(equalToConstant: 100),
             
+//            //автолэйот для предупреждения длинны пароля
+            alertLabel.topAnchor.constraint(equalTo: stackViewLoginPassword.bottomAnchor, constant: 1),
+            alertLabel.leadingAnchor.constraint(equalTo: stackViewLoginPassword.leadingAnchor),
+            alertLabel.trailingAnchor.constraint(equalTo: stackViewLoginPassword.trailingAnchor),
+            alertLabel.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -1),
+        
             
             // автолэйот для Логотипа
             logoImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 120),
@@ -198,7 +211,6 @@ class LogInViewController: UIViewController {
             logoImageView.widthAnchor.constraint(equalToConstant: 100),
             
             //автолэйот для кнопки логин
-
             loginButton.topAnchor.constraint(equalTo: stackViewLoginPassword.safeAreaLayoutGuide.bottomAnchor, constant: 16),
             loginButton.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             loginButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
