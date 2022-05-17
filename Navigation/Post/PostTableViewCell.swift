@@ -63,6 +63,12 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
+        
+        
+        
+        
+        
+        
     }
     
     required init?(coder: NSCoder) {
