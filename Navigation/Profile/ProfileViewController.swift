@@ -87,7 +87,27 @@ extension ProfileViewController: UITableViewDelegate {
     //  исчезновения выделения ячейки
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView .deselectRow(at: indexPath, animated: true)
+        //переход на детальный просмотр поста
+        if indexPath.item != 0 {
+            
+            let detailPostVC = DetailPostViewController()
+            detailPostVC.setupCell(postModel[indexPath.item - 1])
+            navigationController?.pushViewController(detailPostVC, animated: true)
+            
+            
+            
+            
+        }
+        
+        
+        
+        
     }
+    
+    
+
+    
+    
 }
 
 extension ProfileViewController: PhotosTableViewCellDelegate {

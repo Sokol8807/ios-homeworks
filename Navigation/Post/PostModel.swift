@@ -18,10 +18,10 @@ struct PostModel {
         
         var post = [PostModel]()
         
-        post.append(PostModel(author: "Автор 1", description: "Какое-то очень длинное или короткое описание, которого может быть или не быть 1", image: ("jumpingCat"), likes: 103, view: 123))
-        post.append(PostModel(author: "Автор 2", description: "Какое-то очень длинное или короткое описание, которого может быть или не быть 2", image: ("jumpingCat2"), likes: 203, view: 223))
-        post.append(PostModel(author: "Автор 3", description: "Какое-то очень длинное или короткое описание, которого может быть или не быть 3", image: ("jumpingCat3"), likes: 303, view: 323))
-        post.append(PostModel(author: "Автор 4", description: "Какое-то очень длинное или короткое описание, которого может быть или не быть4", image: ("jumpingCat4"), likes: 403, view: 423))
+        post.append(PostModel(author: "Автор 1", description: "Какое-то очень длинное или короткое описание, которого может быть или не быть 1", image: ("jumpingCat"), likes: 0, view: 0))
+        post.append(PostModel(author: "Автор 2", description: "Какое-то очень длинное или короткое описание, которого может быть или не быть 2", image: ("jumpingCat2"), likes: 0, view: 0))
+        post.append(PostModel(author: "Автор 3", description: "Какое-то очень длинное или короткое описание, которого может быть или не быть 3", image: ("jumpingCat3"), likes: 0, view: 0))
+        post.append(PostModel(author: "Автор 4", description: "Какое-то очень длинное или короткое описание, которого может быть или не быть4", image: ("jumpingCat4"), likes: 0, view: 0))
         
         
         return post

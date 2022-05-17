@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD34192D28341F260038BE93 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD34192C28341F260038BE93 /* DetailPostViewController.swift */; };
 		FD587099281161760085F043 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD587098281161760085F043 /* ProfileHeaderView.swift */; };
 		FD617978280821EB00A831E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD617977280821EB00A831E3 /* AppDelegate.swift */; };
 		FD61797C280821EB00A831E3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61797B280821EB00A831E3 /* PostViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD34192C28341F260038BE93 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		FD587098281161760085F043 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		FD617974280821EB00A831E3 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD617977280821EB00A831E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				FDFD5625282086D8006F3A34 /* PostTableViewCell.swift */,
 				FDFD5627282141D3006F3A34 /* UIView+Extension.swift */,
 				FDFD561E281EAF77006F3A34 /* HexUIColor.swift */,
+				FD34192C28341F260038BE93 /* DetailPostViewController.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				FDBE81932827CF3C00797694 /* PhotosTableViewCellDelegate.swift in Sources */,
 				FDA0B512280D568B00026AC0 /* InfoViewController.swift in Sources */,
 				FDCA7F6A280D9020008EA20F /* Post.swift in Sources */,
+				FD34192D28341F260038BE93 /* DetailPostViewController.swift in Sources */,
 				FD61797C280821EB00A831E3 /* PostViewController.swift in Sources */,
 				FDA0B5102809CC8700026AC0 /* FeedViewController.swift in Sources */,
 				FD617978280821EB00A831E3 /* AppDelegate.swift in Sources */,
