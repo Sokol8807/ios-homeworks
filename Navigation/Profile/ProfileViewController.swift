@@ -3,6 +3,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    
+    
     private lazy var postModel = PostModel.makePostModel()
     private lazy var imageModel = ImageModel.addImage()
     
@@ -30,6 +32,11 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.isNavigationBarHidden = true
+//    }
+    
     private func layout () {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -52,6 +59,7 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.item != 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+            cell.tapPostImageDelegate = self
             cell.setupCell(postModel[indexPath.row - 1])
             return cell
         } else {
@@ -68,9 +76,7 @@ extension ProfileViewController: UITableViewDataSource {
 
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return UITableView.automaticDimension   // автоматические размеры - условия элементы должны быть четко привязанны и к верху и к низу
-        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -87,27 +93,17 @@ extension ProfileViewController: UITableViewDelegate {
     //  исчезновения выделения ячейки
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView .deselectRow(at: indexPath, animated: true)
+
+
         //переход на детальный просмотр поста
-        if indexPath.item != 0 {
-            
-            let detailPostVC = DetailPostViewController()
-            detailPostVC.setupCell(postModel[indexPath.item - 1])
-            navigationController?.pushViewController(detailPostVC, animated: true)
-            
-            
-            
-            
-        }
-        
-        
+//        if indexPath.item != 0 {
+//            let detailPostVC = DetailPostViewController()
+//            detailPostVC.setupCell(postModel[indexPath.item - 1])
+//            navigationController?.pushViewController(detailPostVC, animated: true)
+//        }
         
         
     }
-    
-    
-
-    
-    
 }
 
 extension ProfileViewController: PhotosTableViewCellDelegate {
@@ -115,10 +111,9 @@ extension ProfileViewController: PhotosTableViewCellDelegate {
         
         let photosViewController = PhotosViewController()
         navigationController?.pushViewController(photosViewController, animated: true)
-        
     }
-    
 }
+
 
 // MARK: - Расширение скрывает клавиатуру
 
@@ -145,6 +140,23 @@ extension ProfileViewController: UITextViewDelegate {
 }
 
 
+// MARK: - TapPostImageDelegate
+
+extension ProfileViewController: TapPostImageDelegate {
+    func postImagePressed(author: String, description: String, image: UIImage) {
+        let newView = PostFullScreen ()
+        newView.authorLabel.text = author
+        newView.postImageView.image = image
+        newView.descriptionLabel.text = description
+        navigationController?.pushViewController(newView, animated: true)
+        
+        
+        
+    }
+    
+    
+    
+}
 
 
 

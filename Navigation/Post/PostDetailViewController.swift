@@ -17,9 +17,7 @@ class DetailPostViewController : UIViewController {
         view.backgroundColor = .systemGray6
         navigationItem.title = "Подробнее"
         navigationController?.navigationBar.isHidden = false
-        
     }
-    
     
     private let scrollView: UIScrollView = {
        let viewScroll = UIScrollView()
@@ -28,17 +26,13 @@ class DetailPostViewController : UIViewController {
         
     } ()
     
-    
-
-    
-    
     private var viewContent: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private var postView: UIImageView = {
+    var postView: UIImageView = {
         let imageView = UIImageView ()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .black
@@ -47,7 +41,7 @@ class DetailPostViewController : UIViewController {
         return imageView
     }()
     
-    private var authourLabel: UILabel = {
+    var authourLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -56,7 +50,7 @@ class DetailPostViewController : UIViewController {
         return label
     }()
     
-    private var descriptionLable: UILabel = {
+    var descriptionLable: UILabel = {
         let descriptionLable = UILabel()
         descriptionLable.translatesAutoresizingMaskIntoConstraints = false
         descriptionLable.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -65,7 +59,7 @@ class DetailPostViewController : UIViewController {
         return descriptionLable
     }()
     
-    private var likesLable: UILabel = {
+   var likesLable: UILabel = {
         let lableLike = UILabel()
         lableLike.translatesAutoresizingMaskIntoConstraints = false
         lableLike.font = .systemFont(ofSize: 16, weight: .regular)
@@ -73,7 +67,7 @@ class DetailPostViewController : UIViewController {
         return lableLike
     }()
     
-    private var viewLabel: UILabel = {
+    var viewLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16, weight: .regular)
@@ -82,12 +76,10 @@ class DetailPostViewController : UIViewController {
         return label
     }()
     
-    
-    
     // подписываю PostModel под элементы таблицы
     func setupCell(_ post: PostModel) {
         authourLabel.text = post.author
-        postView.image = UIImage(named: post.image)
+        postView.image = post.image
         descriptionLable.text = post.description
         likesLable.text = "Likes: \(post.likes)"
         viewLabel.text = "Views: \(post.view)"
@@ -114,7 +106,7 @@ class DetailPostViewController : UIViewController {
             viewContent.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             viewContent.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             viewContent.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            viewContent.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            viewContent.widthAnchor.constraint(equalTo: scrollView.widthAnchor), // важно что бы работало
             
             // Констрейнт для authourLabel
             authourLabel.topAnchor.constraint(equalTo: viewContent.topAnchor, constant: 16),
@@ -137,8 +129,8 @@ class DetailPostViewController : UIViewController {
             likesLable.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor, constant: 16),
             likesLable.trailingAnchor.constraint(equalTo: viewContent.centerXAnchor),
             likesLable.bottomAnchor.constraint(equalTo: viewContent.bottomAnchor, constant: -16),
-            
-            // Констрейнт для viewLabel
+
+//            // Констрейнт для viewLabel
             viewLabel.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 16),
             viewLabel.leadingAnchor.constraint(equalTo: viewContent.centerXAnchor),
             viewLabel.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor, constant: -16),

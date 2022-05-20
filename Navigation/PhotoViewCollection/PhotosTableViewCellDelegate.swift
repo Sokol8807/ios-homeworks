@@ -31,7 +31,7 @@ class PhotosTableViewCell: UITableViewCell {
     
    
     // Создаю кнопку стрелочку для перехода в галерею с фото
-    private  let button: UIButton = {
+    private lazy var button: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .black

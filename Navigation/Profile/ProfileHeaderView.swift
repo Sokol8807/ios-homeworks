@@ -11,6 +11,7 @@ import UIKit
 class ProfileHeaderView: UIView {
     
     private var statusText: String?
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayuot()
@@ -140,6 +141,8 @@ class ProfileHeaderView: UIView {
            let tapGesture = UITapGestureRecognizer (target: self, action: #selector(tapAction))
            avatarImageView.addGestureRecognizer(tapGesture)
        }
+    
+    
        @objc private func tapAction(){
            
            UIView.animate(withDuration: 0.5,
