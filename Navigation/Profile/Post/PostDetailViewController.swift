@@ -9,7 +9,6 @@ import UIKit
 
 class PostDetailViewController : UIViewController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         layout ()
@@ -19,8 +18,8 @@ class PostDetailViewController : UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
-     let scrollView: UIScrollView = {
-       let viewScroll = UIScrollView()
+    let scrollView: UIScrollView = {
+        let viewScroll = UIScrollView()
         viewScroll.translatesAutoresizingMaskIntoConstraints = false
         return viewScroll
         
@@ -59,7 +58,7 @@ class PostDetailViewController : UIViewController {
         return descriptionLable
     }()
     
-   var likesLable: UILabel = {
+    var likesLable: UILabel = {
         let lableLike = UILabel()
         lableLike.translatesAutoresizingMaskIntoConstraints = false
         lableLike.font = .systemFont(ofSize: 16, weight: .regular)
@@ -120,7 +119,7 @@ class PostDetailViewController : UIViewController {
             likesLable.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor, constant: 16),
             likesLable.trailingAnchor.constraint(equalTo: viewContent.centerXAnchor),
             likesLable.bottomAnchor.constraint(equalTo: viewContent.bottomAnchor, constant: -16),
-
+            
             // Констрейнт для viewLabel
             viewLabel.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 16),
             viewLabel.leadingAnchor.constraint(equalTo: viewContent.centerXAnchor),
@@ -128,13 +127,5 @@ class PostDetailViewController : UIViewController {
             viewLabel.bottomAnchor.constraint(equalTo: viewContent.bottomAnchor, constant: -16)
         ])
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

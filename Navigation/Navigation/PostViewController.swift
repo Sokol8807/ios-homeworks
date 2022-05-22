@@ -19,7 +19,6 @@ class PostViewController: UIViewController {
         setupController()
     }
     
-    
     private func setupController() {
         if let post = post {
             

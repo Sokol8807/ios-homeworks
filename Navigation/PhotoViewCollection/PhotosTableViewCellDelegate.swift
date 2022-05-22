@@ -14,7 +14,6 @@ protocol PhotosTableViewCellDelegate: AnyObject {
 class PhotosTableViewCell: UITableViewCell {
     
     weak var delegate: PhotosTableViewCellDelegate?
-    
     let imageModel = ImageModel.addImage()
     
     // Создаю TableCollection для фото на странице TableView в профиле
@@ -29,7 +28,6 @@ class PhotosTableViewCell: UITableViewCell {
         return viewCollection
     }()
     
-   
     // Создаю кнопку стрелочку для перехода в галерею с фото
     private lazy var button: UIButton = {
         let button = UIButton()
@@ -52,7 +50,6 @@ class PhotosTableViewCell: UITableViewCell {
     @objc private func goToGallery() {
         delegate?.buttonTap()
     }
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

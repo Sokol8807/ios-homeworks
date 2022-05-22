@@ -23,7 +23,7 @@ class PhotosViewController: UIViewController {
         return collectionGallery
     }()
     
-    private let buttonCancelAnimation: UIButton = {
+    private lazy var buttonCancel: UIButton = {
         let button = UIButton()
         button.layer.opacity = 0
         button.setImage(UIImage(named: "closer"), for: .normal)
@@ -37,7 +37,7 @@ class PhotosViewController: UIViewController {
         let view = UIView()
         view.frame = UIScreen.main.bounds
         view.backgroundColor = .black
-        view.alpha = 0.7
+        view.alpha = 0.8
         view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.opacity = 0
@@ -54,21 +54,19 @@ class PhotosViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // добавляю  title в фото
         self.navigationItem.title = "Фото Галерея"
-        setup()
+        setupLayout()
     }
     
-    private func setup() {
+    private func setupLayout() {
         
-        [photoCollection, blackView, fullScreenImageView, buttonCancelAnimation].forEach({view.addSubview($0)})
+        [photoCollection, blackView, fullScreenImageView, buttonCancel].forEach({view.addSubview($0)})
         
         //добавляю констрейнты для коллекции
         NSLayoutConstraint.activate([
@@ -77,19 +75,17 @@ class PhotosViewController: UIViewController {
             photoCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             photoCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-         //констрейнты для полноэкранного фото
-            
+            //констрейнты для полноэкранного фото
             fullScreenImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             fullScreenImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             fullScreenImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
             fullScreenImageView.heightAnchor.constraint(equalTo: fullScreenImageView.widthAnchor, multiplier: 1),
             
-            
             //констрейнты для кнопки выход
-            buttonCancelAnimation.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            buttonCancelAnimation.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 8),
-            buttonCancelAnimation.widthAnchor.constraint(equalToConstant: 40),
-            buttonCancelAnimation.heightAnchor.constraint(equalTo: buttonCancelAnimation.widthAnchor, multiplier: 1)
+            buttonCancel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            buttonCancel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            buttonCancel.widthAnchor.constraint(equalToConstant: 40),
+            buttonCancel.heightAnchor.constraint(equalTo: buttonCancel.widthAnchor, multiplier: 1)
         ])
     }
 }
@@ -106,7 +102,7 @@ extension PhotosViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier, for: indexPath) as! PhotosCollectionViewCell
         cell.setupImageModel(imageModel[indexPath.item])
         cell.buttonAllPhotoCellDelegate = self
-
+        
         return cell
     }
 }
@@ -137,43 +133,40 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
-
-
-
 // MARK: - TapPostImageDelegate
 
 extension PhotosViewController: PhotoCellDelegate {
-
+    
     func tapAction(photo: UIImage) {
         self.fullScreenImageView.image = photo
         self.fullScreenImageView.isUserInteractionEnabled = true
         self.navigationController?.isNavigationBarHidden = true
-
+        
         UIView.animate(withDuration: 0.5,
                        delay: 0.0,
                        usingSpringWithDamping: 1.0,
                        initialSpringVelocity: 0.0,
                        options: .curveEaseInOut) {
-
-            self.blackView.layer.opacity = 0.8
+            
+            self.blackView.layer.opacity = 0.85
             self.fullScreenImageView.layer.opacity = 1
             self.view.layoutIfNeeded()
-
+            
         } completion: { _ in
             UIView.animate(withDuration: 0.3,
                            delay: 0.0) {
-                self.buttonCancelAnimation.layer.opacity = 1
+                self.buttonCancel.layer.opacity = 1
             }
         }
     }
-
+    
     @objc func cancelAnimationButton() {
         UIView.animate(withDuration: 0.3,
                        delay: 0.0,
                        usingSpringWithDamping: 1.0,
                        initialSpringVelocity: 0.0,
                        options: .curveEaseInOut) {
-            self.buttonCancelAnimation.layer.opacity = 0
+            self.buttonCancel.layer.opacity = 0
         } completion: { _ in
             UIView.animate(withDuration: 0.5,
                            delay: 0.0) {

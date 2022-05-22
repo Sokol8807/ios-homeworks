@@ -3,8 +3,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    
-    
     private lazy var postModel = PostModel.makePostModel()
     private lazy var imageModel = ImageModel.addImage()
     
@@ -13,7 +11,7 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.separatorInset = .zero // !!
+        tableView.separatorInset = .zero
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
         return tableView
@@ -32,11 +30,7 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.isNavigationBarHidden = true
-//    }
-    
+
     private func layout () {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([

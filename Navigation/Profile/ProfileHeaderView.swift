@@ -22,7 +22,6 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // добавляю аватарку
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "cat"))
@@ -141,7 +140,6 @@ class ProfileHeaderView: UIView {
            let tapGesture = UITapGestureRecognizer (target: self, action: #selector(tapAction))
            avatarImageView.addGestureRecognizer(tapGesture)
        }
-    
     
        @objc private func tapAction(){
            

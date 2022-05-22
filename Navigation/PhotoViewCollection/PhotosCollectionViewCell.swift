@@ -8,28 +8,17 @@
 import UIKit
 
 
-protocol PhotoCellDelegate: AnyObject {
-    
-    func  tapAction(photo: UIImage)
-    func  cancelAnimationButton()
-}
-
-
 class PhotosCollectionViewCell: UICollectionViewCell {
     
     weak var buttonAllPhotoCellDelegate: PhotoCellDelegate?
-    
     
     private var galleryImages: UIImageView = {
         let galleryImage = UIImageView()
         galleryImage .translatesAutoresizingMaskIntoConstraints = false
         galleryImage .contentMode = .scaleAspectFill
         galleryImage .clipsToBounds = true
-       
-        
         return galleryImage
     }()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,25 +30,20 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-
     private func setupGestures() {
-      
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(photoAction))
         galleryImages.addGestureRecognizer(tapGesture)
         galleryImages.isUserInteractionEnabled = true
     }
     
     @objc private func photoAction() {
-        
         buttonAllPhotoCellDelegate?.tapAction(photo: galleryImages.image!)
     }
-    
     
     // Функция отвечает за показ фото
     func setupImageModel(_ image: ImageModel) {
         galleryImages.image = UIImage(named: image.image)
     }
-    
     
     private func imageLayout() {
         contentView.addSubview(galleryImages)
@@ -73,5 +57,10 @@ class PhotosCollectionViewCell: UICollectionViewCell {
             
         ])
     }
+}
 
+
+protocol PhotoCellDelegate: AnyObject {
+    func  tapAction(photo: UIImage)
+    func  cancelAnimationButton()
 }

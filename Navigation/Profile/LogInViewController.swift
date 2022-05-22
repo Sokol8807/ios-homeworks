@@ -152,7 +152,6 @@ class LogInViewController: UIViewController {
 
         }
             
-        
             if logTextField.text != login && logTextField.text != ""  || passwordTextField.text != password && passwordTextField.text != "" {
             let alertController = UIAlertController()
             alertController.title = "Неправильно введен логин или пароль"

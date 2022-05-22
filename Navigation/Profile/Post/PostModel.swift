@@ -23,7 +23,6 @@ struct PostModel {
         posts.append(PostModel(author: "Автор 3", description: "Какое-то очень длинное или короткое описание, которого может быть или не быть 3", image: UIImage(named:"jumpingCat3")!, likes: 0, view: 0))
         posts.append(PostModel(author: "Автор 4", description: "Какое-то очень длинное или короткое описание, которого может быть или не быть4", image: UIImage(named:"jumpingCat4")!, likes: 0, view: 0))
         
-        
         return posts
     }
 }

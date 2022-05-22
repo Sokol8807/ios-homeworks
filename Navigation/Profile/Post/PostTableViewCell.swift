@@ -86,37 +86,37 @@ class PostTableViewCell: UITableViewCell {
         
         let tapPostImageViewGesture = UITapGestureRecognizer(target: self, action: #selector(postImageViewAction))
         postImageView.addGestureRecognizer(tapPostImageViewGesture)
-                
+        
     }
     
     @objc private func likeAction() {
         UIView.animate(withDuration: 0.5,
-                        delay: 0.0,
-                        usingSpringWithDamping: 1.0,
-                        initialSpringVelocity: 0.0,
-                        options: .curveEaseInOut) {
+                       delay: 0.0,
+                       usingSpringWithDamping: 1.0,
+                       initialSpringVelocity: 0.0,
+                       options: .curveEaseInOut) {
             
             self.modelPostFull.likes += 1
             self.likesLable.text = "Likes: \(self.modelPostFull.likes)"
         }
     }
+    
+    @objc private func postImageViewAction() {
         
-        @objc private func postImageViewAction() {
+        // delegate?.buttonTap
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.0,
+                       usingSpringWithDamping: 1.0,
+                       initialSpringVelocity: 0.0,
+                       options: .curveEaseInOut) {
             
-            // delegate?.buttonTap
-            UIView.animate(withDuration: 0.5,
-                           delay: 0.0,
-                           usingSpringWithDamping: 1.0,
-                           initialSpringVelocity: 0.0,
-                           options: .curveEaseInOut) {
-                
-                self.modelPostFull.view += 1
-                self.viewLabel.text = "Views: \(self.modelPostFull.view)"
-                self.tapPostImageDelegate?.postImagePressed(author: self.modelPostFull.author, description: self.modelPostFull.description ?? "", image: self.modelPostFull.image)
-                
-            }
+            self.modelPostFull.view += 1
+            self.viewLabel.text = "Views: \(self.modelPostFull.view)"
+            self.tapPostImageDelegate?.postImagePressed(author: self.modelPostFull.author, description: self.modelPostFull.description ?? "", image: self.modelPostFull.image)
+            
+        }
     }
-
+    
     // подписываю PostModel под элементы таблицы
     func setupCell(_ post: PostModel) {
         modelPostFull = post
@@ -125,9 +125,7 @@ class PostTableViewCell: UITableViewCell {
         descriptionLable.text = post.description
         likesLable.text = "Likes: \(post.likes)"
         viewLabel.text = "Views: \(post.view)"
-        }
-    
-    
+    }
     
     private func layout() {
         [mainView, postImageView,descriptionLable, authourLabel, likesLable, viewLabel].forEach {contentView.addSubview($0)}
