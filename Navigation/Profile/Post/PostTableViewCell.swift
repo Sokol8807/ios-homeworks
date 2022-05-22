@@ -112,10 +112,9 @@ class PostTableViewCell: UITableViewCell {
                 
                 self.modelPostFull.view += 1
                 self.viewLabel.text = "Views: \(self.modelPostFull.view)"
-                self.tapPostImageDelegate?.postImagePressed(author: self.modelPostFull.author, description: self.modelPostFull.description, image: self.modelPostFull.image)
+                self.tapPostImageDelegate?.postImagePressed(author: self.modelPostFull.author, description: self.modelPostFull.description ?? "", image: self.modelPostFull.image)
                 
             }
-        
     }
 
     // подписываю PostModel под элементы таблицы
@@ -124,8 +123,8 @@ class PostTableViewCell: UITableViewCell {
         authourLabel.text = post.author
         postImageView.image = post.image
         descriptionLable.text = post.description
-        likesLable.text = "Likes: \(String(post.likes))"
-        viewLabel.text = "Views: \(String(post.view))"
+        likesLable.text = "Likes: \(post.likes)"
+        viewLabel.text = "Views: \(post.view)"
         }
     
     

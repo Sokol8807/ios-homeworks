@@ -7,29 +7,59 @@
 
 import UIKit
 
+
+protocol PhotoCellDelegate: AnyObject {
+    
+    func  tapAction(photo: UIImage)
+    func  cancelAnimationButton()
+}
+
+
 class PhotosCollectionViewCell: UICollectionViewCell {
     
-    private let galleryImages: UIImageView = {
+    weak var buttonAllPhotoCellDelegate: PhotoCellDelegate?
+    
+    
+    private var galleryImages: UIImageView = {
         let galleryImage = UIImageView()
         galleryImage .translatesAutoresizingMaskIntoConstraints = false
         galleryImage .contentMode = .scaleAspectFill
         galleryImage .clipsToBounds = true
+       
+        
         return galleryImage
     }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         imageLayout()
+        setupGestures()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // добавляю метод показа фото
+
+    private func setupGestures() {
+      
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(photoAction))
+        galleryImages.addGestureRecognizer(tapGesture)
+        galleryImages.isUserInteractionEnabled = true
+    }
+    
+    @objc private func photoAction() {
+        
+        buttonAllPhotoCellDelegate?.tapAction(photo: galleryImages.image!)
+    }
+    
+    
+    // Функция отвечает за показ фото
     func setupImageModel(_ image: ImageModel) {
         galleryImages.image = UIImage(named: image.image)
     }
+    
     
     private func imageLayout() {
         contentView.addSubview(galleryImages)
@@ -39,7 +69,8 @@ class PhotosCollectionViewCell: UICollectionViewCell {
             galleryImages.topAnchor.constraint(equalTo: contentView.topAnchor),
             galleryImages.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             galleryImages.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            galleryImages.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            galleryImages.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
         ])
     }
 

@@ -1,7 +1,4 @@
-//
-//  AppDelegate.swift
-//  Navigation
-//
+
 //  Created by Ilya Sokolov on 14.04.2022.
 //
 

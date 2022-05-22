@@ -9,7 +9,7 @@ import UIKit
 
 struct PostModel {
     var author: String
-    var description: String
+    var description: String?
     var image: UIImage
     var likes: Int  
     var view: Int

@@ -7,7 +7,7 @@
 
 import Foundation
 
-// создаю структуру Пост
+//// создаю структуру Пост
 struct Post {
     var title: String
 }

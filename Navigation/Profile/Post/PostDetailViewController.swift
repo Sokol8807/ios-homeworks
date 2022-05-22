@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailPostViewController : UIViewController {
+class PostDetailViewController : UIViewController {
     
     
     override func viewDidLoad() {
@@ -19,20 +19,20 @@ class DetailPostViewController : UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
-    private let scrollView: UIScrollView = {
+     let scrollView: UIScrollView = {
        let viewScroll = UIScrollView()
         viewScroll.translatesAutoresizingMaskIntoConstraints = false
         return viewScroll
         
     } ()
     
-    private var viewContent: UIView = {
+    var viewContent: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    var postView: UIImageView = {
+    var postImageView: UIImageView = {
         let imageView = UIImageView ()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .black
@@ -76,22 +76,13 @@ class DetailPostViewController : UIViewController {
         return label
     }()
     
-    // подписываю PostModel под элементы таблицы
-    func setupCell(_ post: PostModel) {
-        authourLabel.text = post.author
-        postView.image = post.image
-        descriptionLable.text = post.description
-        likesLable.text = "Likes: \(post.likes)"
-        viewLabel.text = "Views: \(post.view)"
-        
-    }
     
     private func layout() {
         view.addSubview(scrollView)
         scrollView.addSubview(viewContent)
         
         
-        [postView,descriptionLable, authourLabel, likesLable, viewLabel].forEach {viewContent.addSubview($0)}
+        [viewLabel, authourLabel,postImageView,likesLable, descriptionLable ].forEach {viewContent.addSubview($0)}
         
         NSLayoutConstraint.activate([
             
@@ -113,16 +104,16 @@ class DetailPostViewController : UIViewController {
             authourLabel.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor, constant: 16),
             authourLabel.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor, constant: -16),
             
-            // Констрейнт для postView
-            postView.topAnchor.constraint(equalTo: authourLabel.bottomAnchor, constant: 16),
-            postView.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor),
-            postView.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor),
-            postView.heightAnchor.constraint(equalTo: postView.widthAnchor),
+            // Констрейнт для postImageView
+            postImageView.topAnchor.constraint(equalTo: authourLabel.bottomAnchor, constant: 16),
+            postImageView.leadingAnchor.constraint(equalTo: viewContent.safeAreaLayoutGuide.leadingAnchor),
+            postImageView.trailingAnchor.constraint(equalTo: viewContent.safeAreaLayoutGuide.trailingAnchor),
+            postImageView.heightAnchor.constraint(equalTo: postImageView.widthAnchor),
             
             // Констрейнт для descriptionLable
-            descriptionLable.topAnchor.constraint(equalTo: postView.bottomAnchor, constant: 16),
-            descriptionLable.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor, constant: 16),
-            descriptionLable.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor, constant: -16),
+            descriptionLable.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
+            descriptionLable.leadingAnchor.constraint(equalTo: viewContent.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            descriptionLable.trailingAnchor.constraint(equalTo: viewContent.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
             // Констрейнт для likesLable
             likesLable.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 16),
@@ -130,7 +121,7 @@ class DetailPostViewController : UIViewController {
             likesLable.trailingAnchor.constraint(equalTo: viewContent.centerXAnchor),
             likesLable.bottomAnchor.constraint(equalTo: viewContent.bottomAnchor, constant: -16),
 
-//            // Констрейнт для viewLabel
+            // Констрейнт для viewLabel
             viewLabel.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 16),
             viewLabel.leadingAnchor.constraint(equalTo: viewContent.centerXAnchor),
             viewLabel.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor, constant: -16),

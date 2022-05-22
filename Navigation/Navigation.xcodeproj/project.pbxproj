@@ -12,8 +12,6 @@
 		FD3419322834FB970038BE93 /* ButtonLoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3419312834FB970038BE93 /* ButtonLoginDelegate.swift */; };
 		FD3419342834FBC40038BE93 /* TapPostImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3419332834FBC40038BE93 /* TapPostImageDelegate.swift */; };
 		FD3419362834FBE90038BE93 /* TapAllPhotoCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3419352834FBE90038BE93 /* TapAllPhotoCellDelegate.swift */; };
-		FD34193828368A8D0038BE93 /* PostFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD34193728368A8D0038BE93 /* PostFullScreen.swift */; };
-		FD34193A28377FF60038BE93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD34193928377FF60038BE93 /* ViewController.swift */; };
 		FD587099281161760085F043 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD587098281161760085F043 /* ProfileHeaderView.swift */; };
 		FD617978280821EB00A831E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD617977280821EB00A831E3 /* AppDelegate.swift */; };
 		FD61797C280821EB00A831E3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61797B280821EB00A831E3 /* PostViewController.swift */; };
@@ -23,7 +21,6 @@
 		FDA0B512280D568B00026AC0 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0B511280D568B00026AC0 /* InfoViewController.swift */; };
 		FDBE818D2827CDE600797694 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBE818C2827CDE600797694 /* PhotosViewController.swift */; };
 		FDBE818F2827CE6200797694 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBE818E2827CE6200797694 /* PhotosCollectionViewCell.swift */; };
-		FDBE81912827CF1600797694 /* PhotosCollectionViewCellForTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBE81902827CF1600797694 /* PhotosCollectionViewCellForTableView.swift */; };
 		FDBE81932827CF3C00797694 /* PhotosTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBE81922827CF3C00797694 /* PhotosTableViewCellDelegate.swift */; };
 		FDBE81952827CF6E00797694 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBE81942827CF6E00797694 /* ImageModel.swift */; };
 		FDBE81B72828606100797694 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBE81B62828606100797694 /* SceneDelegate.swift */; };
@@ -43,8 +40,6 @@
 		FD3419312834FB970038BE93 /* ButtonLoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLoginDelegate.swift; sourceTree = "<group>"; };
 		FD3419332834FBC40038BE93 /* TapPostImageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapPostImageDelegate.swift; sourceTree = "<group>"; };
 		FD3419352834FBE90038BE93 /* TapAllPhotoCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAllPhotoCellDelegate.swift; sourceTree = "<group>"; };
-		FD34193728368A8D0038BE93 /* PostFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFullScreen.swift; sourceTree = "<group>"; };
-		FD34193928377FF60038BE93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FD587098281161760085F043 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		FD617974280821EB00A831E3 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD617977280821EB00A831E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +51,6 @@
 		FDA0B511280D568B00026AC0 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		FDBE818C2827CDE600797694 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		FDBE818E2827CE6200797694 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
-		FDBE81902827CF1600797694 /* PhotosCollectionViewCellForTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCellForTableView.swift; sourceTree = "<group>"; };
 		FDBE81922827CF3C00797694 /* PhotosTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		FDBE81942827CF6E00797694 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		FDBE81B62828606100797694 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,17 +78,31 @@
 		FD34192E2834FB550038BE93 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
+				FD34192F2834FB7C0038BE93 /* ButtonCellDelegate.swift */,
 				FD3419312834FB970038BE93 /* ButtonLoginDelegate.swift */,
 				FD3419352834FBE90038BE93 /* TapAllPhotoCellDelegate.swift */,
-				FD34192F2834FB7C0038BE93 /* ButtonCellDelegate.swift */,
 				FD3419332834FBC40038BE93 /* TapPostImageDelegate.swift */,
+				FDBE81B62828606100797694 /* SceneDelegate.swift */,
+				FD617977280821EB00A831E3 /* AppDelegate.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		FD34193C283A3B530038BE93 /* AllPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				FDBE81942827CF6E00797694 /* ImageModel.swift */,
+				FDBE818E2827CE6200797694 /* PhotosCollectionViewCell.swift */,
+				FDBE81922827CF3C00797694 /* PhotosTableViewCellDelegate.swift */,
+				FDBE818C2827CDE600797694 /* PhotosViewController.swift */,
+			);
+			path = AllPhoto;
 			sourceTree = "<group>";
 		};
 		FD587097281161370085F043 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				FDFD562028206BE9006F3A34 /* Post */,
 				FDCBE83328085F8C001B7C26 /* ProfileViewController.swift */,
 				FD587098281161760085F043 /* ProfileHeaderView.swift */,
 				FDFD561C281DBB76006F3A34 /* LogInViewController.swift */,
@@ -107,7 +115,6 @@
 			children = (
 				FD34192E2834FB550038BE93 /* Delegate */,
 				FDBE818B2827CD9D00797694 /* PhotoViewCollection */,
-				FDFD562028206BE9006F3A34 /* Post */,
 				FD587097281161370085F043 /* Profile */,
 				FD617976280821EB00A831E3 /* Navigation */,
 				FD617975280821EB00A831E3 /* Products */,
@@ -126,9 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				FD61797B280821EB00A831E3 /* PostViewController.swift */,
-				FD617977280821EB00A831E3 /* AppDelegate.swift */,
-				FDBE81B62828606100797694 /* SceneDelegate.swift */,
-				FD34193928377FF60038BE93 /* ViewController.swift */,
 				FDCBE83128085E82001B7C26 /* TabBarViewController.swift */,
 				FDA0B50F2809CC8700026AC0 /* FeedViewController.swift */,
 				FDA0B511280D568B00026AC0 /* InfoViewController.swift */,
@@ -142,11 +146,7 @@
 		FDBE818B2827CD9D00797694 /* PhotoViewCollection */ = {
 			isa = PBXGroup;
 			children = (
-				FDBE818C2827CDE600797694 /* PhotosViewController.swift */,
-				FDBE818E2827CE6200797694 /* PhotosCollectionViewCell.swift */,
-				FDBE81902827CF1600797694 /* PhotosCollectionViewCellForTableView.swift */,
-				FDBE81922827CF3C00797694 /* PhotosTableViewCellDelegate.swift */,
-				FDBE81942827CF6E00797694 /* ImageModel.swift */,
+				FD34193C283A3B530038BE93 /* AllPhoto */,
 			);
 			path = PhotoViewCollection;
 			sourceTree = "<group>";
@@ -160,7 +160,6 @@
 				FD34192C28341F260038BE93 /* PostDetailViewController.swift */,
 				FDFD5627282141D3006F3A34 /* UIView+Extension.swift */,
 				FDFD561E281EAF77006F3A34 /* HexUIColor.swift */,
-				FD34193728368A8D0038BE93 /* PostFullScreen.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -240,10 +239,7 @@
 				FDFD5628282141D3006F3A34 /* UIView+Extension.swift in Sources */,
 				FD3419362834FBE90038BE93 /* TapAllPhotoCellDelegate.swift in Sources */,
 				FDCBE83228085E82001B7C26 /* TabBarViewController.swift in Sources */,
-				FD34193828368A8D0038BE93 /* PostFullScreen.swift in Sources */,
-				FDBE81912827CF1600797694 /* PhotosCollectionViewCellForTableView.swift in Sources */,
 				FDFD561D281DBB76006F3A34 /* LogInViewController.swift in Sources */,
-				FD34193A28377FF60038BE93 /* ViewController.swift in Sources */,
 				FDFD561F281EAF77006F3A34 /* HexUIColor.swift in Sources */,
 				FDBE81932827CF3C00797694 /* PhotosTableViewCellDelegate.swift in Sources */,
 				FDA0B512280D568B00026AC0 /* InfoViewController.swift in Sources */,
