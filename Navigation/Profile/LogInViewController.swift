@@ -109,7 +109,6 @@ class LogInViewController: UIViewController {
         return labelAlert
     }()
     
-    
     //действие кнопки - переход на экран ProfileViewController
     @objc private func tapAction() {
         // проверка логина и пароля на пустоту
