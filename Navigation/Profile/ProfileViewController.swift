@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
+
     private func layout () {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -52,6 +53,8 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.item != 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+           // Делегат для детального просмотра поста!!!
+            cell.tapPostImageDelegate = self
             cell.setupCell(postModel[indexPath.row - 1])
             return cell
         } else {
@@ -68,9 +71,7 @@ extension ProfileViewController: UITableViewDataSource {
 
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return UITableView.automaticDimension   // автоматические размеры - условия элементы должны быть четко привязанны и к верху и к низу
-        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -83,10 +84,10 @@ extension ProfileViewController: UITableViewDelegate {
         return section == 0 ? 200:0
     }
     
-    
     //  исчезновения выделения ячейки
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView .deselectRow(at: indexPath, animated: true)
+
     }
 }
 
@@ -95,9 +96,20 @@ extension ProfileViewController: PhotosTableViewCellDelegate {
         
         let photosViewController = PhotosViewController()
         navigationController?.pushViewController(photosViewController, animated: true)
-        
     }
-    
+}
+
+
+// MARK: - TapPostImageDelegate
+
+extension ProfileViewController: TapPostImageDelegate {
+    func postImagePressed(author: String, description: String, image: UIImage) {
+        let newView = PostDetailViewController()
+        newView.authourLabel.text = author
+        newView.postImageView.image = image
+        newView.descriptionLable.text = description
+        navigationController?.pushViewController(newView, animated: true)
+    }
 }
 
 // MARK: - Расширение скрывает клавиатуру
@@ -119,10 +131,10 @@ extension ProfileViewController: UITextViewDelegate {
         view.addGestureRecognizer(press)
     }
     @objc func dismissKeyboard(){
-        
         view.endEditing(true)
     }
 }
+
 
 
 

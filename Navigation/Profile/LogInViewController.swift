@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 class LogInViewController: UIViewController {
+    
+    private lazy var login = "123456"
+    private lazy var password = "123456"
+    
     private let notificationCenter = NotificationCenter.default
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,12 +59,9 @@ class LogInViewController: UIViewController {
         logTF.textColor = .black
         logTF.autocapitalizationType = .none
         logTF.tintColor = .lightGray
-
         // отодвинул текст от угла
         logTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: logTF.frame.height))
         logTF.leftViewMode = .always
-
-
         return logTF
     }()
     
@@ -78,7 +79,6 @@ class LogInViewController: UIViewController {
         // отодвинул текст от угла
         passwordTF.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: passwordTF.frame.height))
         passwordTF.leftViewMode = .always
-
         return passwordTF
         
     }()
@@ -95,11 +95,83 @@ class LogInViewController: UIViewController {
         return buttonLogin
     }()
     
+    // всплывающее предупреждение о длинне пароля
+    private lazy var alertLabel: UILabel = {
+        let labelAlert = UILabel()
+        labelAlert.translatesAutoresizingMaskIntoConstraints = false
+        labelAlert.text = "Внимание! Пароль слишком короткий"
+        labelAlert.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        labelAlert.textColor = .red
+        labelAlert.textAlignment = .center
+        labelAlert.isHidden = true
+
+        
+        return labelAlert
+    }()
+    
     //действие кнопки - переход на экран ProfileViewController
     @objc private func tapAction() {
-        let profileVC = ProfileViewController()
-        navigationController?.pushViewController(profileVC, animated: true)
+        // проверка логина и пароля на пустоту
+        
+        
+        if logTextField.text == login && passwordTextField.text == password {
+            
+            let profileVC = ProfileViewController()
+            navigationController?.pushViewController(profileVC, animated: true)
+            }
+        
+        else {
+        
+        if logTextField.text == "" || passwordTextField.text == "" {
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.1
+            animation.repeatCount = 2
+            animation.autoreverses = true
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: stackViewLoginPassword.center.x - 5, y: stackViewLoginPassword.center.y))
+            animation.toValue = NSValue(cgPoint: CGPoint(x: stackViewLoginPassword.center.x + 5, y: stackViewLoginPassword.center.y))
+            stackViewLoginPassword.layer.add(animation, forKey: "position")
+            
+            logTextField.attributedPlaceholder = NSAttributedString (string: logTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red])
+            passwordTextField.attributedPlaceholder = NSAttributedString (string: passwordTextField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red])
+            
+        } else {
+            stackViewLoginPassword.layer.removeAnimation(forKey: "position")
+            
+        }
+        // проверка пароля на длинну
+        if passwordTextField.text!.count < 5 && passwordTextField.text != "" {
+            
+            alertLabel.isHidden = false
+            
+            _ = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(alertTimer), userInfo: nil, repeats: false)
+            return
+            }
+        else {
+            alertLabel.isHidden = true
+
+        }
+            
+            if logTextField.text != login && logTextField.text != ""  || passwordTextField.text != password && passwordTextField.text != "" {
+            let alertController = UIAlertController()
+            alertController.title = "Неправильно введен логин или пароль"
+            alertController.message = "Пожалуйста, проверьте правильность введеных данных и попробуйте еще раз"
+            
+            let okAction = UIAlertAction(title: "Выйти", style: .default)
+            alertController.addAction(okAction)
+            
+            present(alertController,animated: true)
+                        
+            
+        }
+        
+        }
     }
+    
+    // таймер на появление alertLabel
+    @objc private func alertTimer() {
+        alertLabel.isHidden = true
+    }
+    
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -148,6 +220,8 @@ class LogInViewController: UIViewController {
         contentView.addSubview(logoImageView)
         contentView.addSubview(loginButton)
         contentView.addSubview(stackViewLoginPassword)
+        // добавил лабел предупреждение на контент вью
+        contentView.addSubview(alertLabel)
         
         // добавляю отображение на стейк
         [logTextField, passwordTextField] .forEach {stackViewLoginPassword.addArrangedSubview($0)}
@@ -160,7 +234,13 @@ class LogInViewController: UIViewController {
             stackViewLoginPassword.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             stackViewLoginPassword.heightAnchor.constraint(equalToConstant: 100),
             
-            
+           //автолэйот для предупреждения длинны пароля
+            alertLabel.topAnchor.constraint(equalTo: stackViewLoginPassword.bottomAnchor, constant: 1),
+            alertLabel.leadingAnchor.constraint(equalTo: stackViewLoginPassword.leadingAnchor),
+            alertLabel.trailingAnchor.constraint(equalTo: stackViewLoginPassword.trailingAnchor),
+            alertLabel.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -1),
+
+        
             // автолэйот для Логотипа
             logoImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 120),
             logoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -168,7 +248,6 @@ class LogInViewController: UIViewController {
             logoImageView.widthAnchor.constraint(equalToConstant: 100),
             
             //автолэйот для кнопки логин
-
             loginButton.topAnchor.constraint(equalTo: stackViewLoginPassword.safeAreaLayoutGuide.bottomAnchor, constant: 16),
             loginButton.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             loginButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),

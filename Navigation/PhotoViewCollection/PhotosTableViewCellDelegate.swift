@@ -14,7 +14,6 @@ protocol PhotosTableViewCellDelegate: AnyObject {
 class PhotosTableViewCell: UITableViewCell {
     
     weak var delegate: PhotosTableViewCellDelegate?
-    
     let imageModel = ImageModel.addImage()
     
     // Создаю TableCollection для фото на странице TableView в профиле
@@ -25,13 +24,12 @@ class PhotosTableViewCell: UITableViewCell {
         viewCollection.translatesAutoresizingMaskIntoConstraints = false
         viewCollection.dataSource = self
         viewCollection.delegate = self
-        viewCollection.register(PhotosCollectionViewCellForTableView.self, forCellWithReuseIdentifier: PhotosCollectionViewCellForTableView.identifier)
+        viewCollection.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.identifier)
         return viewCollection
     }()
     
-   
     // Создаю кнопку стрелочку для перехода в галерею с фото
-    private  let button: UIButton = {
+    private lazy var button: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .black
@@ -52,7 +50,6 @@ class PhotosTableViewCell: UITableViewCell {
     @objc private func goToGallery() {
         delegate?.buttonTap()
     }
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -98,7 +95,7 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCellForTableView.identifier, for: indexPath) as! PhotosCollectionViewCellForTableView
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier, for: indexPath) as! PhotosCollectionViewCell
         cell.setupImageModel(imageModel[indexPath.item])
         return cell
     }

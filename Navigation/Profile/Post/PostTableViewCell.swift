@@ -9,18 +9,25 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
+    
+    weak var  tapPostImageDelegate: TapPostImageDelegate?
+    
+    
+    private var modelPostFull = PostModel(author: "", description: "", image: UIImage(named:"jumpingCat")!, likes: 1, view: 1)
+    
     private var mainView: UIView = {
         let viewWhite = UIView()
         viewWhite.translatesAutoresizingMaskIntoConstraints = false
         return viewWhite
     }()
     
-    private var postView: UIImageView = {
+    private var postImageView: UIImageView = {
         let imageView = UIImageView ()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .black
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -47,6 +54,7 @@ class PostTableViewCell: UITableViewCell {
         lableLike.translatesAutoresizingMaskIntoConstraints = false
         lableLike.font = .systemFont(ofSize: 16, weight: .regular)
         lableLike.textColor = .black
+        lableLike.isUserInteractionEnabled = true
         return lableLike
     }()
     
@@ -63,24 +71,64 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
+        setupGestures()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // подписываю PostModel под элементы таблицы
-    func setupCell(_ post: PostModel) {
-        authourLabel.text = post.author
-        postView.image = UIImage(named: post.image)
-        descriptionLable.text = post.description
-        likesLable.text = "Likes: \(post.likes)"
-        viewLabel.text = "Views: \(post.view)"
+    // прописываю Gestures
+    private func setupGestures() {
+        
+        let tapLikeGesture = UITapGestureRecognizer(target: self, action: #selector(likeAction))
+        likesLable.addGestureRecognizer(tapLikeGesture)
+        
+        let tapPostImageViewGesture = UITapGestureRecognizer(target: self, action: #selector(postImageViewAction))
+        postImageView.addGestureRecognizer(tapPostImageViewGesture)
         
     }
     
+    @objc private func likeAction() {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.0,
+                       usingSpringWithDamping: 1.0,
+                       initialSpringVelocity: 0.0,
+                       options: .curveEaseInOut) {
+            
+            self.modelPostFull.likes += 1
+            self.likesLable.text = "Likes: \(self.modelPostFull.likes)"
+        }
+    }
+    
+    @objc private func postImageViewAction() {
+        
+        // delegate?.buttonTap
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.0,
+                       usingSpringWithDamping: 1.0,
+                       initialSpringVelocity: 0.0,
+                       options: .curveEaseInOut) {
+            
+            self.modelPostFull.view += 1
+            self.viewLabel.text = "Views: \(self.modelPostFull.view)"
+            self.tapPostImageDelegate?.postImagePressed(author: self.modelPostFull.author, description: self.modelPostFull.description ?? "", image: self.modelPostFull.image)
+            
+        }
+    }
+    
+    // подписываю PostModel под элементы таблицы
+    func setupCell(_ post: PostModel) {
+        modelPostFull = post
+        authourLabel.text = post.author
+        postImageView.image = post.image
+        descriptionLable.text = post.description
+        likesLable.text = "Likes: \(post.likes)"
+        viewLabel.text = "Views: \(post.view)"
+    }
+    
     private func layout() {
-        [mainView, postView,descriptionLable, authourLabel, likesLable, viewLabel].forEach {contentView.addSubview($0)}
+        [mainView, postImageView,descriptionLable, authourLabel, likesLable, viewLabel].forEach {contentView.addSubview($0)}
         
         NSLayoutConstraint.activate([
             
@@ -96,13 +144,13 @@ class PostTableViewCell: UITableViewCell {
             authourLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -16),
             
             // Констрейнт для postView
-            postView.topAnchor.constraint(equalTo: authourLabel.bottomAnchor, constant: 16),
-            postView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
-            postView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
-            postView.heightAnchor.constraint(equalTo: postView.widthAnchor),
+            postImageView.topAnchor.constraint(equalTo: authourLabel.bottomAnchor, constant: 16),
+            postImageView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
+            postImageView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
+            postImageView.heightAnchor.constraint(equalTo: postImageView.widthAnchor),
             
             // Констрейнт для descriptionLable
-            descriptionLable.topAnchor.constraint(equalTo: postView.bottomAnchor, constant: 16),
+            descriptionLable.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
             descriptionLable.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 16),
             descriptionLable.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -16),
             

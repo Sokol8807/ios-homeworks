@@ -11,6 +11,7 @@ import UIKit
 class ProfileHeaderView: UIView {
     
     private var statusText: String?
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayuot()
@@ -20,7 +21,6 @@ class ProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     // добавляю аватарку
     private lazy var avatarImageView: UIImageView = {
@@ -102,10 +102,10 @@ class ProfileHeaderView: UIView {
     }()
     
     // добавляю поле для ввода статуса
-    private lazy var statusTextField: UITextField = {
+    // убал свойство lazy что бы обновлялось поле placeholder = "Set something" после ввода статуса
+    private var statusTextField: UITextField = {
         let fieldText = UITextField()
         fieldText.translatesAutoresizingMaskIntoConstraints = false
-        fieldText.text = ""
         fieldText.placeholder = "Set something"
         fieldText.backgroundColor = .white
         fieldText.layer.cornerRadius = 12
@@ -117,13 +117,21 @@ class ProfileHeaderView: UIView {
         fieldText.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return fieldText
     }()
+    
     @objc private func buttonStatus() {
-        statusView.text = statusText
-        print(statusView.text ?? "")
+        if statusTextField.text == "" {
+            statusTextField.attributedPlaceholder = NSAttributedString(
+                string: "Не может быть пустым",
+                attributes: [NSAttributedString.Key.foregroundColor:UIColor.red]
+            )
+        }
+        guard statusTextField.text != "" else { return }
+        statusView.text = statusText ?? ""
+        
     }
     
-    @objc private func statusTextChanged() {
-        statusText = statusTextField.text ?? ""
+    @objc private func statusTextChanged(_ textField: UITextField) {
+        statusText = textField.text ?? ""
     }
     
     
@@ -132,6 +140,7 @@ class ProfileHeaderView: UIView {
            let tapGesture = UITapGestureRecognizer (target: self, action: #selector(tapAction))
            avatarImageView.addGestureRecognizer(tapGesture)
        }
+    
        @objc private func tapAction(){
            
            UIView.animate(withDuration: 0.5,
@@ -186,8 +195,8 @@ class ProfileHeaderView: UIView {
             // настройка отображение avatarImageView
             avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 110),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 110),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 100),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 100),
             
             additionalAvatar.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             additionalAvatar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
